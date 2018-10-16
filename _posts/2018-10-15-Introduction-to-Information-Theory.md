@@ -57,7 +57,7 @@ $${\rm H}[Y\vert X]=-\int p(Y,X)\ln p(Y\vert X).$$
 # Find maximum entropy probability distribution
 Naturally, we hope to maximize the entropy w.r.t. p. Note that this is contraint by the normalization constraint on the probabilities. By adding a Lagrange multiplier, we convert it to be an uncontaint optimization problem. That is, we turn to maximize
 
-$${\rm \widetilde{H}}[p]={\rm H}[p]+\lambda\left(\int p(x)\,{\rm d}x-1\right).$$
+$${\rm \widetilde{H}}[X]={\rm H}[X]+\lambda\left(\int p(x)\,{\rm d}x-1\right).$$
 
 By taking gradient w.r.t. $p$, it is easy to show that uniform distribution minimizes the entropy in discrete case. While in continuous case, we have to deal with the derivative w.r.t. $p$, a continuous function, a subject in [calculus of variations](https://en.wikipedia.org/wiki/Calculus_of_variations). A detailed dsicussion of calculus of variations is out of scope of this blog. Instead, we just introduce the concept of [functional derivative](https://en.wikipedia.org/wiki/Functional_derivative) and the simple calculation rule.
 
@@ -72,14 +72,14 @@ $$\int \frac{\delta F}{\delta \rho}\phi(x)\,{\rm d}x=\lim_{\epsilon\to 0}\frac{F
 Usually, $F$ is  expressed in terms of an integral of a fucntion, say $L$. If $L$ is a function of $x,\rho,\,{\rm and\,}\rho'$, we obtain simple explicit forms of the functional derevative, i.e.,
 
 $$
-F[\rho]=\int L[x,f,f'], \frac{\delta F}{\delta \rho}=\frac{\partial L}{\partial \rho}-\frac{\rm d}{\rm d \it x}\frac{\partial L}{\partial \rho'}.
+F[\rho]=\int L[x,\rho,\rho'], \frac{\delta F}{\delta \rho}=\frac{\partial L}{\partial \rho}-\frac{\rm d}{\rm d \it x}\frac{\partial L}{\partial \rho'}.
 $$
 
-In order for this maximum to be well defined, it will be necessary to constrain the first and second moments of $p$ as well as preserving the normalization constraint. 
+In order for this maximum to be well defined, it will be necessary to constrain the first and second moments of $X$ as well as preserving the normalization constraint. 
 (Indeed, I don't understand why adding these two addtional constraints.) Therefore, we turn to maximize
 
 $$
-{\rm H}[p; \mathbf{\lambda}]={\rm H}[p] + \mathbf{\lambda}^T\left(\int p - 1, \int xp-\mu,\int(x-\mu)^2p-\sigma^2\right)^T, \mathbf{\lambda}\in\mathbb{R}^3.
+{\rm H}[X; \mathbf{\lambda}]={\rm H}[X] + \mathbf{\lambda}^T\left(\int p - 1, \int xp-\mu,\int(x-\mu)^2p-\sigma^2\right)^T, \mathbf{\lambda}\in\mathbb{R}^3.
 $$
 
 Using the computation rule of functional derivative, we have
