@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      TeX: {
+        equationNumbers: {
+          autoNumber: "AMS"
+        }
+      },
+      tex2jax: {
+        inlineMath: [ ['$','$'] ],
+        displayMath: [ ['$$','$$'] ],
+        processEscapes: true,
+      }
+    });
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+      
+  </head><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Theoretical Computer Science | Rotopia</title>
+<meta name="generator" content="Jekyll v3.8.4" />
+<meta property="og:title" content="Theoretical Computer Science" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Computable functions Computable functions def. URM (Unlimited Register Machine) Representation: $\lbrace R_n=r_n\,|\,r_n\in\mathbb{N},n\in\mathbb{Z}^+\rbrace$ 4 instructions: Zero $Z(n)$: set $r_n:=0$ Successor $S(n)$: $r_n:=r_n+1$ Transfer $T(m,n)$: $r_n:=r_m$ Jump $J(m,n,q)$: if $r_m=r_n$, proceed to the $q$th instruction; else, the next." />
+<meta property="og:description" content="Computable functions Computable functions def. URM (Unlimited Register Machine) Representation: $\lbrace R_n=r_n\,|\,r_n\in\mathbb{N},n\in\mathbb{Z}^+\rbrace$ 4 instructions: Zero $Z(n)$: set $r_n:=0$ Successor $S(n)$: $r_n:=r_n+1$ Transfer $T(m,n)$: $r_n:=r_m$ Jump $J(m,n,q)$: if $r_m=r_n$, proceed to the $q$th instruction; else, the next." />
+<link rel="canonical" href="http://localhost:4000/nothing/2018/10/14/theoretical-computer-science.html" />
+<meta property="og:url" content="http://localhost:4000/nothing/2018/10/14/theoretical-computer-science.html" />
+<meta property="og:site_name" content="Rotopia" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-10-14T17:17:13+08:00" />
+<script type="application/ld+json">
+{"headline":"Theoretical Computer Science","dateModified":"2018-10-14T17:17:13+08:00","datePublished":"2018-10-14T17:17:13+08:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/nothing/2018/10/14/theoretical-computer-science.html"},"url":"http://localhost:4000/nothing/2018/10/14/theoretical-computer-science.html","description":"Computable functions Computable functions def. URM (Unlimited Register Machine) Representation: $\\lbrace R_n=r_n\\,|\\,r_n\\in\\mathbb{N},n\\in\\mathbb{Z}^+\\rbrace$ 4 instructions: Zero $Z(n)$: set $r_n:=0$ Successor $S(n)$: $r_n:=r_n+1$ Transfer $T(m,n)$: $r_n:=r_m$ Jump $J(m,n,q)$: if $r_m=r_n$, proceed to the $q$th instruction; else, the next.","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Rotopia" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Rotopia</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/categories/">Categories</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="post-categories">
+        
+        
+        <a href="/categories/#nothing">nothing</a>
+        
+        
+      </div>
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Theoretical Computer Science</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-10-14T17:17:13+08:00" itemprop="datePublished">Oct 14, 2018
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="markdown-toc">
+  <li><a href="#computable-functions" id="markdown-toc-computable-functions">Computable functions</a></li>
+  <li><a href="#generating-computalbe-functions" id="markdown-toc-generating-computalbe-functions">Generating computalbe functions</a></li>
+  <li><a href="#churchs-thesis" id="markdown-toc-churchs-thesis">Church’s thesis</a></li>
+</ul>
+<h1 id="computable-functions">Computable functions</h1>
+<p>def. URM (Unlimited Register Machine)</p>
+<ul>
+  <li>Representation:
+$\lbrace R_n=r_n\,|\,r_n\in\mathbb{N},n\in\mathbb{Z}^+\rbrace$</li>
+  <li>4 instructions:
+    <ul>
+      <li>Zero $Z(n)$: set $r_n:=0$</li>
+      <li>Successor $S(n)$: $r_n:=r_n+1$</li>
+      <li>Transfer $T(m,n)$: $r_n:=r_m$</li>
+      <li>Jump $J(m,n,q)$: if $r_m=r_n$, proceed to the $q$th instruction; else, the next.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>def. Computations 
+A sequence of instructions, $\lbrace I_i|i=1,\dots,s\rbrace$ operating on an initial configuration of URM.</p>
+
+<p>Notations</p>
+<ul>
+  <li>initial configuration: $\mathbf{a}=(a_1,a_2,\dots)$</li>
+  <li>convergence: $P(\mathbf{a})\downarrow$</li>
+  <li>divergence: $P(\mathbf{a})\uparrow$</li>
+</ul>
+
+<p>def. URM-computable</p>
+<ul>
+  <li>$f:\mathbb{N}^n\to\mathbb{N}$</li>
+  <li>$P$ URM-computes $f$: $\forall\,\mathbf{a}\in\mathbb{N}^n,b\in\mathbb{N},P(\mathbf{a})\downarrow b\quad iff\quad\mathbf{a}\in{\rm Dom}(f) \wedge f(\mathbf{a})=b$</li>
+  <li>$f$ is URM-computable if there is a program that URM-computes $f$.</li>
+  <li>$\mathscr{C}:=\lbrace$URM-computable functions$\rbrace$</li>
+  <li>$\mathscr{C}_n:=\lbrace$n-ary URM-computable functions$\rbrace$</li>
+</ul>
+
+<p>def. Decidable</p>
+<ul>
+  <li>n-ary predicate: $M(\mathbf{x}),\mathbf{x}\in\mathbb{N}^n$</li>
+  <li>characteristic function:
+<script type="math/tex">% <![CDATA[
+c_M(\mathbf{x}):=
+{\begin{cases}1&{\rm if}\,M(\mathbf{x})\,{\rm holds,}\\
+0&{\rm otherwise.}
+\end{cases}} %]]></script></li>
+  <li>$M$ is decidable if $c_M$ is computable, otherwise, undecidable.</li>
+</ul>
+
+<h1 id="generating-computalbe-functions">Generating computalbe functions</h1>
+<p>Basic computable functions</p>
+<ul>
+  <li>zero function</li>
+  <li>successor function</li>
+  <li>projection function $U^n_i(\mathbf{x})=x_i$</li>
+</ul>
+
+<p>Remark. The functions above correspond to $Z(1),S(1)$ and $T(i,1)$, which are basic instructions of URM.</p>
+
+<p>def. standard form if a program</p>
+<ul>
+  <li>$P=\lbrace I_k\rbrace^s_1$</li>
+  <li>$\forall\,J(m,n,q),q\leq s+1$</li>
+</ul>
+
+<p>Operations preserving computability</p>
+<ul>
+  <li>Concatenation:
+    <ul>
+      <li>$PQ=\lbrace I_i\rbrace^s_1+\lbrace I_i\rbrace^{s+t}_{s+1}$</li>
+      <li>Replace $J(m,n,q)$ with $J(m,n,q+s)$ in $Q$.</li>
+    </ul>
+  </li>
+  <li>Substitution:
+    <ul>
+      <li>$f: \mathbb{N}^k\to\mathbb{N}$</li>
+      <li>$g_i: \mathbb{N}^n\to\mathbb{N},i=1,\dots,k$</li>
+      <li>$h(\mathbb{x}):=f(g_1(\mathbb{x}),\dots,g_k(\mathbb{x}))$</li>
+    </ul>
+  </li>
+  <li>Recursion:
+    <ul>
+      <li>$f(\mathbb{x}),g(\mathbb{x},y,z)$</li>
+      <li>$h(\mathbb{x},0):=f(\mathbb{x})$</li>
+      <li>$h(\mathbb{x},y+1):=g(\mathbb{x},y,h(\mathbb{x},y))$</li>
+    </ul>
+  </li>
+  <li>Minimization:</li>
+</ul>
+
+<script type="math/tex; mode=display">% <![CDATA[
+g(\mathbb{x},y)=\mu z < y(f(\mathbb{x},z)=0)=
+\begin{cases}
+\min\lbrace z\,|\,z < y, f(\mathbb{x},z)=0\rbrace &{\rm if\,such}\,z\, {\rm exists,} \\
+y &{\rm otherwise.}
+\end{cases} %]]></script>
+
+<h1 id="churchs-thesis">Church’s thesis</h1>
+<p>def. Partial recursive functions $\mathscr{R}$</p>
+<ul>
+  <li>$Z,S,U^n_i\in\mathscr{R}$</li>
+  <li>$\mathscr{R}$ is closed under substitution, recursion and minimalization.</li>
+  <li>$\mathscr{R}$ is the smallest class of partial functions that satisfies the conditions above.</li>
+</ul>
+
+
+  </div><a class="u-url" href="/nothing/2018/10/14/theoretical-computer-science.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Rotopia</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Rotopia</li><li><a class="u-email" href="mailto:hilbert9221@gmail.com">hilbert9221@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/hilbert9221"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">hilbert9221</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Notes on theory and practice of machine learning.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

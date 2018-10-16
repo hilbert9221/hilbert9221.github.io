@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      TeX: {
+        equationNumbers: {
+          autoNumber: "AMS"
+        }
+      },
+      tex2jax: {
+        inlineMath: [ ['$','$'] ],
+        displayMath: [ ['$$','$$'] ],
+        processEscapes: true,
+      }
+    });
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+      
+  </head><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>The Foundations of Program Verification | Rotopia</title>
+<meta name="generator" content="Jekyll v3.8.4" />
+<meta property="og:title" content="The Foundations of Program Verification" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Mathematical Preliminaries def. Relations relation between $S$ and $T$: $R\subset S\times T$ relation on $S$: $S=T$ image of $A\subset S$ under $R$: $R(A):=\lbrace t\in T\,|\,(s,t)\in R, s\in A\rbrace$ pre-image of $B\subset T$ under $R$: $R^{-1}(B):=\lbrace s\in S\,|\,(s,t)\in R,t\in B\rbrace$ closure of $R$ on $S$: the smallest reflexive, tansitive relation which contains $R$, denoted as $R^*$." />
+<meta property="og:description" content="Mathematical Preliminaries def. Relations relation between $S$ and $T$: $R\subset S\times T$ relation on $S$: $S=T$ image of $A\subset S$ under $R$: $R(A):=\lbrace t\in T\,|\,(s,t)\in R, s\in A\rbrace$ pre-image of $B\subset T$ under $R$: $R^{-1}(B):=\lbrace s\in S\,|\,(s,t)\in R,t\in B\rbrace$ closure of $R$ on $S$: the smallest reflexive, tansitive relation which contains $R$, denoted as $R^*$." />
+<link rel="canonical" href="http://localhost:4000/nothing/2018/09/26/program-verification.html" />
+<meta property="og:url" content="http://localhost:4000/nothing/2018/09/26/program-verification.html" />
+<meta property="og:site_name" content="Rotopia" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-09-26T19:34:30+08:00" />
+<script type="application/ld+json">
+{"headline":"The Foundations of Program Verification","dateModified":"2018-09-26T19:34:30+08:00","datePublished":"2018-09-26T19:34:30+08:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/nothing/2018/09/26/program-verification.html"},"url":"http://localhost:4000/nothing/2018/09/26/program-verification.html","description":"Mathematical Preliminaries def. Relations relation between $S$ and $T$: $R\\subset S\\times T$ relation on $S$: $S=T$ image of $A\\subset S$ under $R$: $R(A):=\\lbrace t\\in T\\,|\\,(s,t)\\in R, s\\in A\\rbrace$ pre-image of $B\\subset T$ under $R$: $R^{-1}(B):=\\lbrace s\\in S\\,|\\,(s,t)\\in R,t\\in B\\rbrace$ closure of $R$ on $S$: the smallest reflexive, tansitive relation which contains $R$, denoted as $R^*$.","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Rotopia" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Rotopia</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/categories/">Categories</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="post-categories">
+        
+        
+        <a href="/categories/#nothing">nothing</a>
+        
+        
+      </div>
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">The Foundations of Program Verification</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-09-26T19:34:30+08:00" itemprop="datePublished">Sep 26, 2018
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h1 id="mathematical-preliminaries">Mathematical Preliminaries</h1>
+<p>def. Relations</p>
+<ul>
+  <li>relation between $S$ and $T$: $R\subset S\times T$</li>
+  <li>relation on $S$: $S=T$</li>
+  <li>image of $A\subset S$ under $R$: 
+$R(A):=\lbrace t\in T\,|\,(s,t)\in R, s\in A\rbrace$</li>
+  <li>pre-image of  $B\subset T$ under $R$:
+$R^{-1}(B):=\lbrace s\in S\,|\,(s,t)\in R,t\in B\rbrace$</li>
+  <li>closure of $R$ on $S$: the smallest reflexive, tansitive relation which contains $R$, denoted as $R^*$.</li>
+</ul>
+
+<p>def. Partial Orders</p>
+<ul>
+  <li>partial order $(P,\sqsubseteq)$: $\sqsubseteq$ is reflexive, antisymmetric and transitive. $P$ is also called a <em>poset</em>.</li>
+  <li>monotonic function: $f:P_1\to P_2,a\sqsubseteq_1 b \Rightarrow f(a)\sqsubseteq_2 f(b)$</li>
+</ul>
+
+<p>def. Inductive Definitions of Sets</p>
+<ul>
+  <li>universe: $U$</li>
+  <li>basis set: $B\subset U$</li>
+  <li>constructor set: $K=\lbrace r\subset U^n\times U\,|\,r\,{\rm satisfies\,some\,conditions}\rbrace$</li>
+  <li>$S$:
+    <ul>
+      <li>$B\subset S$</li>
+      <li>$\forall\,r\in K,r(S^n)\subset S$</li>
+    </ul>
+  </li>
+  <li>$A:=\min (S,\subset)$
+$A\subset U$ is called <em>inductively defined</em> by $B$ and $K$.</li>
+</ul>
+
+<p>def. Alternative definition</p>
+<ul>
+  <li>a constrruction sequence for $u$: $\lbrace u_i\rbrace^m_1,u_m=u$</li>
+  <li>$u_i\in B$</li>
+  <li>$\exists\,r\in K,i_1,\dots,i_n &lt; i,{\rm s.t.},((u_{i_1},\dots,u_{i_n}),u_i)$</li>
+</ul>
+
+<p>def. Free Inductive Definitions</p>
+
+<p>$\forall\,a\in A,a\in B\,{\rm or}\,\exists !\mathbb{a}\in A^n,{\rm s.t.},(\mathbb{a},a)\in r$</p>
+
+<p>def. Well-founded Sets (WFS)</p>
+<ul>
+  <li>$(W,\sqsubseteq)$</li>
+  <li>$\forall\,S\subset W,\exists\,\min S$</li>
+</ul>
+
+<p>Remark. $(W,\sqsubseteq)$ is a well-founded set iff $\nexists \lbrace a_i\,|\,a_{i+1}\sqsubset a_i,i\in\mathbb{N} \rbrace\subset W$.</p>
+
+<p>thm. The Principle of Noetherian Induction</p>
+<ul>
+  <li>Induction basis: $\forall\,x\in \min W,P(x)=1$.</li>
+  <li>Induction step: $\forall\,x\notin \min W,\forall\,y\in W,y\sqsubset x,P(y)=1\Rightarrow P(x)=1$.</li>
+</ul>
+
+<h1 id="predicate-logic">Predicate Logic</h1>
+<p>def. logical symbols</p>
+<ul>
+  <li>connectives: $\neg,\wedge,\vee,\supset,\equiv$</li>
+  <li>equality symbol: $=$</li>
+  <li>existential quantifier: $\exists$, universal quantifier: $\forall$</li>
+  <li>4 punctuation marks: ., (, ) and ,</li>
+  <li>variables ($V$)</li>
+  <li>truth symbols: $true$ and $false$</li>
+</ul>
+
+<p>def. extralogical symbols</p>
+<ul>
+  <li>the set of function symbols: $F$</li>
+  <li>the set of predicate symbols: $P$</li>
+  <li>constants: $0$-ary function</li>
+  <li>propositional constants: $0$-ary predicate</li>
+</ul>
+
+<p>def. terms</p>
+<ul>
+  <li>basis: $B=(F,P)$</li>
+  <li>set of terms: $T_B$</li>
+  <li>inductive definition:
+    <ul>
+      <li>$V\subset T_B,{\rm const}(F)\subset T_B$</li>
+      <li>$\mathbb{t}\in T_B^n,f\in F \Rightarrow f(\mathbb{t})\in T_B$</li>
+    </ul>
+  </li>
+</ul>
+
+<p>def. well-formed formuals</p>
+<ul>
+  <li>denotation: $WFF_B$</li>
+  <li>$\lbrace true,false \rbrace\subset WFF_B$</li>
+  <li>${\rm const}(P)\subset WFF_B$</li>
+  <li>$t_1,t_2\in T_B \Rightarrow (t_1=t_2) \in WFF_B$</li>
+  <li>$\mathbb{t}\in T_B^n,p\in P\Rightarrow p(\mathbb{t})\in WFF_B$</li>
+  <li>$w\in WFF_B\Rightarrow \neg w\in WFF_B$</li>
+  <li>$w\in WFF_B,x\in V \Rightarrow (\forall\,x.w),(\exists\,x.w)\in WFF_B$</li>
+  <li>$w_1,w_2\in WFF_B\Rightarrow (w_1\wedge w_2),(w_1\vee w_2),(w_1\supset w_2),(w_1 \equiv w_2)\in WFF_B$</li>
+</ul>
+
+<p>def. Interpretation</p>
+<ul>
+  <li>denotation: $\mathscr{I}=(D,\mathscr{I}_0)$</li>
+  <li>domain: $D$</li>
+  <li>$\mathscr{I}_0({\rm const}(F))\subset D$</li>
+  <li>$\mathscr{I}_0(f):D^n\to D$</li>
+  <li>$\mathscr{I}_0({\rm const}(P))\subset {\rm Bool}$</li>
+  <li>$\mathscr{I}_0(p):D^n\to {\rm Bool}$</li>
+</ul>
+
+  </div><a class="u-url" href="/nothing/2018/09/26/program-verification.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Rotopia</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Rotopia</li><li><a class="u-email" href="mailto:hilbert9221@gmail.com">hilbert9221@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/hilbert9221"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">hilbert9221</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Notes on theory and practice of machine learning.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

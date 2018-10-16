@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-15T19:15:39+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Rotopia</title><subtitle>Notes on theory and practice of machine learning.</subtitle><entry><title type="html">Hello</title><link href="http://localhost:4000/nothing/2018/09/12/hello.html" rel="alternate" type="text/html" title="Hello" /><published>2018-09-12T00:00:00+08:00</published><updated>2018-09-12T00:00:00+08:00</updated><id>http://localhost:4000/nothing/2018/09/12/hello</id><content type="html" xml:base="http://localhost:4000/nothing/2018/09/12/hello.html">&lt;p&gt;$a^2$&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{equation}
+\{a\}
+\end{equation}&lt;/script&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/sky.jpeg&quot; alt=&quot;loss&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">$a^2$</summary></entry></feed>
