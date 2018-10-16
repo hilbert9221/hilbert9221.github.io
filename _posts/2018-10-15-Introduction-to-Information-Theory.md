@@ -50,7 +50,7 @@ Taking $N\to\infty$, we have
 
 $$\lim_{N\to\infty}{\rm H}=-\sum_{i}p_i\ln p_i,\,{\rm where}\,p_i=\lim_{N\to\infty}\frac{n_i}{N}.$$
 
-Definition of entropy can be applied to conditional cases. Suppose that we have 2 sets of variables, $X$ and $Y$, where $Y$ is already known. Then then the additional information needed to specify w.r.t. $Y$ is $\ln p(Y\|X)$. Thus, we define the _conditonal entropy_ of $Y$ given $X$ as 
+Definition of entropy can be applied to conditional cases. Suppose that we have 2 sets of variables, $X$ and $Y$, where $X$ is already known. Then then the additional information needed to specify w.r.t. $Y$ is $\ln p(Y\|X)$. Thus, we define the _conditonal entropy_ of $Y$ given $X$ as 
 
 $${\rm H}[Y\vert X]=-\int p(Y,X)\ln p(Y\vert X).$$
 
@@ -59,7 +59,7 @@ Naturally, we hope to maximize the entropy w.r.t. p. Note that this is contraint
 
 $${\rm \widetilde{H}}[p]={\rm H}[p]+\lambda\left(\int p(x)\,{\rm d}x-1\right).$$
 
-By taking gradient w.r.t. $p$, it is easy to show that uniform distribution minimize the entropy in discrete case. While in continuous case, we have to deal with the derivative w.r.t. $p$, a continuous function, a subject in [calculus of variations](https://en.wikipedia.org/wiki/Calculus_of_variations). A detailed dsicussion of calculus of variations is out of scope of this blog. Instead, we just introduce the concept of [functional derivative](https://en.wikipedia.org/wiki/Functional_derivative) and the simple calculation rule.
+By taking gradient w.r.t. $p$, it is easy to show that uniform distribution minimizes the entropy in discrete case. While in continuous case, we have to deal with the derivative w.r.t. $p$, a continuous function, a subject in [calculus of variations](https://en.wikipedia.org/wiki/Calculus_of_variations). A detailed dsicussion of calculus of variations is out of scope of this blog. Instead, we just introduce the concept of [functional derivative](https://en.wikipedia.org/wiki/Functional_derivative) and the simple calculation rule.
 
 Defnition. Functional derivative
 - $M$: a [manifold](https://en.wikipedia.org/wiki/Manifold) representing functions $\rho$
@@ -67,30 +67,30 @@ Defnition. Functional derivative
 
 The functional derivative of $F[\rho]$, denoted as $\frac{\delta F}{\delta \rho}$, is defined by
 
-$$\int \frac{\delta F}{\delta \rho}\phi(x)\,dx=\lim_{\epsilon\to 0}\frac{F[\rho+\epsilon\phi]-F[\rho]}{\epsilon},\forall\phi\in M.$$
+$$\int \frac{\delta F}{\delta \rho}\phi(x)\,{\rm d}x=\lim_{\epsilon\to 0}\frac{F[\rho+\epsilon\phi]-F[\rho]}{\epsilon},\forall\phi\in M.$$
 
 Usually, $F$ is  expressed in terms of an integral of a fucntion, say $L$. If $L$ is a function of $x,\rho,\,{\rm and\,}\rho'$, we obtain simple explicit forms of the functional derevative, i.e.,
 
 $$
-F[\rho]=\int L[x,f,f'], \frac{\delta F}{\delta \rho}=\frac{\partial L}{\partial \rho}-\frac{d}{dx}\frac{\partial L}{\partial \rho'}.
+F[\rho]=\int L[x,f,f'], \frac{\delta F}{\delta \rho}=\frac{\partial L}{\partial \rho}-\frac{\rm d}{\rm d \it x}\frac{\partial L}{\partial \rho'}.
 $$
 
 In order for this maximum to be well defined, it will be necessary to constrain the first and second moments of $p$ as well as preserving the normalization constraint. 
-(Indeed, I don't understand why adding these two addtional constraints.)Therefore, we turn to maximize
+(Indeed, I don't understand why adding these two addtional constraints.) Therefore, we turn to maximize
 
 $$
-{\rm H}[p; \mathbf{\lambda}]={\rm H}[p] + \mathbf{\lambda}^T\left(\int p - 1, \int xp-\mu,\int(x-\mu)^2p-\sigma^2\right), \mathbf{\lambda}\in\mathbb{R}^3.
+{\rm H}[p; \mathbf{\lambda}]={\rm H}[p] + \mathbf{\lambda}^T\left(\int p - 1, \int xp-\mu,\int(x-\mu)^2p-\sigma^2\right)^T, \mathbf{\lambda}\in\mathbb{R}^3.
 $$
 
 Using the computation rule of functional derivative, we have
 
 $$
-\frac{\delta H}{\delta p}=-(1+\ln p)+\mathbf{\lambda}^T(1,x,(x-\mu)^2).
+\frac{\delta {\rm H}}{\delta p}=-(1+\ln p)+\mathbf{\lambda}^T(1,x,(x-\mu)^2)^T.
 $$
 
-$H$ is maximized when its functional derivative is zero. (Maybe igorous argument can be found in texts on calculus of variations.) Thus, we obtain
+${\rm H}$ is maximized when its functional derivative is zero. (Maybe igorous argument can be found in texts on calculus of variations.) Thus, we obtain
 
-$$p(x)={\rm exp}\lbrace-1+\mathbf{\lambda}^T(1,x,(x-\mu)^2)\rbrace.$$
+$$p(x)={\rm exp}\lbrace-1+\mathbf{\lambda}^T(1,x,(x-\mu)^2)^T\rbrace.$$
 
 By careful computation, we find that $p$ is the p.d.f. of the Gaussian. And the corresponding entropy is ${\rm H}[X]=\frac{1}{2}\left(1+\ln(2\,\pi\sigma^2)\right)$, indicating that the larger the variance, the larger the entropy (of Gaussian). Note that the entropy can be negative if the variance is small enough, which different from dicrete case.
 
@@ -114,6 +114,6 @@ $$
 {\rm I}[X, Y]=-\int p(X,Y)\ln \frac{p(X)p(Y)}{p(X,Y)}.
 $$
 
-Interestingly, this quantity is symmetric, and it turns out to be the difference of entropy of $X$ and the conditonal entropy of $X$ given $Y$, i.e.,
+Interestingly, this quantity is symmetric, and it turns out to be the difference between entropy of $X$ and the conditonal entropy of $X$ given $Y$, i.e.,
 
 $${\rm I}[X, Y]={\rm H}[X]-{\rm H}[X|Y]={\rm H}[Y|X]-{\rm H}[Y].$$
