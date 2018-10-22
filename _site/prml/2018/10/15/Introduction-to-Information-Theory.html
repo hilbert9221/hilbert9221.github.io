@@ -30,13 +30,13 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Two ways to introduce entropy A heuristic motivation Chapter 1.6 Two ways to introduce entropy A heuristic motivation Intuition: Information increases as uncertainty increases. Thus, we model an event as a random variable $X$ and look for a quantiy $h(x)$ to measure the uncertainty." />
 <meta property="og:description" content="Two ways to introduce entropy A heuristic motivation Chapter 1.6 Two ways to introduce entropy A heuristic motivation Intuition: Information increases as uncertainty increases. Thus, we model an event as a random variable $X$ and look for a quantiy $h(x)$ to measure the uncertainty." />
-<link rel="canonical" href="http://localhost:4000/prml/notes/2018/10/15/Introduction-to-Information-Theory.html" />
-<meta property="og:url" content="http://localhost:4000/prml/notes/2018/10/15/Introduction-to-Information-Theory.html" />
+<link rel="canonical" href="http://localhost:4000/prml/2018/10/15/Introduction-to-Information-Theory.html" />
+<meta property="og:url" content="http://localhost:4000/prml/2018/10/15/Introduction-to-Information-Theory.html" />
 <meta property="og:site_name" content="Rotopia" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-10-15T19:15:39+08:00" />
+<meta property="article:published_time" content="2018-10-15T00:00:00+08:00" />
 <script type="application/ld+json">
-{"headline":"Introduction to Information Theory","dateModified":"2018-10-15T19:15:39+08:00","datePublished":"2018-10-15T19:15:39+08:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/prml/notes/2018/10/15/Introduction-to-Information-Theory.html"},"url":"http://localhost:4000/prml/notes/2018/10/15/Introduction-to-Information-Theory.html","description":"Two ways to introduce entropy A heuristic motivation Chapter 1.6 Two ways to introduce entropy A heuristic motivation Intuition: Information increases as uncertainty increases. Thus, we model an event as a random variable $X$ and look for a quantiy $h(x)$ to measure the uncertainty.","@context":"http://schema.org"}</script>
+{"headline":"Introduction to Information Theory","dateModified":"2018-10-15T00:00:00+08:00","datePublished":"2018-10-15T00:00:00+08:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/prml/2018/10/15/Introduction-to-Information-Theory.html"},"url":"http://localhost:4000/prml/2018/10/15/Introduction-to-Information-Theory.html","description":"Two ways to introduce entropy A heuristic motivation Chapter 1.6 Two ways to introduce entropy A heuristic motivation Intuition: Information increases as uncertainty increases. Thus, we model an event as a random variable $X$ and look for a quantiy $h(x)$ to measure the uncertainty.","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Rotopia" /></head>
 <body><header class="site-header" role="banner">
@@ -59,9 +59,6 @@
         
         
         <a href="/categories/#PRML">PRML</a>
-        &nbsp;
-        
-        <a href="/categories/#Notes">Notes</a>
         
         
       </div>
@@ -71,7 +68,7 @@
   <header class="post-header">
     <h1 class="post-title p-name" itemprop="name headline">Introduction to Information Theory</h1>
     <p class="post-meta">
-      <time class="dt-published" datetime="2018-10-15T19:15:39+08:00" itemprop="datePublished">Oct 15, 2018
+      <time class="dt-published" datetime="2018-10-15T00:00:00+08:00" itemprop="datePublished">Oct 15, 2018
       </time></p>
   </header>
 
@@ -130,16 +127,16 @@ w.l.o.g., set $h(x)=-\ln p(x)$.</p>
 
 <script type="math/tex; mode=display">\lim_{N\to\infty}{\rm H}=-\sum_{i}p_i\ln p_i,\,{\rm where}\,p_i=\lim_{N\to\infty}\frac{n_i}{N}.</script>
 
-<p>Definition of entropy can be applied to conditional cases. Suppose that we have 2 sets of variables, $X$ and $Y$, where $Y$ is already known. Then then the additional information needed to specify w.r.t. $Y$ is $\ln p(Y|X)$. Thus, we define the <em>conditonal entropy</em> of $Y$ given $X$ as</p>
+<p>Definition of entropy can be applied to conditional cases. Suppose that we have 2 sets of variables, $X$ and $Y$, where $X$ is already known. Then then the additional information needed to specify w.r.t. $Y$ is $\ln p(Y|X)$. Thus, we define the <em>conditonal entropy</em> of $Y$ given $X$ as</p>
 
 <script type="math/tex; mode=display">{\rm H}[Y\vert X]=-\int p(Y,X)\ln p(Y\vert X).</script>
 
 <h1 id="find-maximum-entropy-probability-distribution">Find maximum entropy probability distribution</h1>
 <p>Naturally, we hope to maximize the entropy w.r.t. p. Note that this is contraint by the normalization constraint on the probabilities. By adding a Lagrange multiplier, we convert it to be an uncontaint optimization problem. That is, we turn to maximize</p>
 
-<script type="math/tex; mode=display">{\rm \widetilde{H}}[p]={\rm H}[p]+\lambda\left(\int p(x)\,{\rm d}x-1\right).</script>
+<script type="math/tex; mode=display">{\rm \widetilde{H}}[X]={\rm H}[X]+\lambda\left(\int p(x)\,{\rm d}x-1\right).</script>
 
-<p>By taking gradient w.r.t. $p$, it is easy to show that uniform distribution minimize the entropy in discrete case. While in continuous case, we have to deal with the derivative w.r.t. $p$, a continuous function, a subject in <a href="https://en.wikipedia.org/wiki/Calculus_of_variations">calculus of variations</a>. A detailed dsicussion of calculus of variations is out of scope of this blog. Instead, we just introduce the concept of <a href="https://en.wikipedia.org/wiki/Functional_derivative">functional derivative</a> and the simple calculation rule.</p>
+<p>By taking gradient w.r.t. $p$, it is easy to show that uniform distribution minimizes the entropy in discrete case. While in continuous case, we have to deal with the derivative w.r.t. $p$, a continuous function, a subject in <a href="https://en.wikipedia.org/wiki/Calculus_of_variations">calculus of variations</a>. A detailed dsicussion of calculus of variations is out of scope of this blog. Instead, we just introduce the concept of <a href="https://en.wikipedia.org/wiki/Functional_derivative">functional derivative</a> and the simple calculation rule.</p>
 
 <p>Defnition. Functional derivative</p>
 <ul>
@@ -149,24 +146,24 @@ w.l.o.g., set $h(x)=-\ln p(x)$.</p>
 
 <p>The functional derivative of $F[\rho]$, denoted as $\frac{\delta F}{\delta \rho}$, is defined by</p>
 
-<script type="math/tex; mode=display">\int \frac{\delta F}{\delta \rho}\phi(x)\,dx=\lim_{\epsilon\to 0}\frac{F[\rho+\epsilon\phi]-F[\rho]}{\epsilon},\forall\phi\in M.</script>
+<script type="math/tex; mode=display">\int \frac{\delta F}{\delta \rho}\phi(x)\,{\rm d}x=\lim_{\epsilon\to 0}\frac{F[\rho+\epsilon\phi]-F[\rho]}{\epsilon},\forall\phi\in M.</script>
 
 <p>Usually, $F$ is  expressed in terms of an integral of a fucntion, say $L$. If $L$ is a function of $x,\rho,\,{\rm and\,}\rho’$, we obtain simple explicit forms of the functional derevative, i.e.,</p>
 
-<script type="math/tex; mode=display">F[\rho]=\int L[x,f,f'], \frac{\delta F}{\delta \rho}=\frac{\partial L}{\partial \rho}-\frac{d}{dx}\frac{\partial L}{\partial \rho'}.</script>
+<script type="math/tex; mode=display">F[\rho]=\int L[x,\rho,\rho'], \frac{\delta F}{\delta \rho}=\frac{\partial L}{\partial \rho}-\frac{\rm d}{\rm d \it x}\frac{\partial L}{\partial \rho'}.</script>
 
-<p>In order for this maximum to be well defined, it will be necessary to constrain the first and second moments of $p$ as well as preserving the normalization constraint. 
-(Indeed, I don’t understand why adding these two addtional constraints.)Therefore, we turn to maximize</p>
+<p>In order for this maximum to be well defined, it will be necessary to constrain the first and second moments of $X$ as well as preserving the normalization constraint. 
+(Indeed, I don’t understand why adding these two addtional constraints.) Therefore, we turn to maximize</p>
 
-<script type="math/tex; mode=display">{\rm H}[p; \mathbf{\lambda}]={\rm H}[p] + \mathbf{\lambda}^T\left(\int p - 1, \int xp-\mu,\int(x-\mu)^2p-\sigma^2\right), \mathbf{\lambda}\in\mathbb{R}^3.</script>
+<script type="math/tex; mode=display">{\rm H}[X; \mathbf{\lambda}]={\rm H}[X] + \mathbf{\lambda}^T\left(\int p - 1, \int xp-\mu,\int(x-\mu)^2p-\sigma^2\right)^T, \mathbf{\lambda}\in\mathbb{R}^3.</script>
 
 <p>Using the computation rule of functional derivative, we have</p>
 
-<script type="math/tex; mode=display">\frac{\delta H}{\delta p}=-(1+\ln p)+\mathbf{\lambda}^T(1,x,(x-\mu)^2).</script>
+<script type="math/tex; mode=display">\frac{\delta {\rm H}}{\delta p}=-(1+\ln p)+\mathbf{\lambda}^T(1,x,(x-\mu)^2)^T.</script>
 
-<p>$H$ is maximized when its functional derivative is zero. (Maybe igorous argument can be found in texts on calculus of variations.) Thus, we obtain</p>
+<p>${\rm H}$ is maximized when its functional derivative is zero. (Maybe igorous argument can be found in texts on calculus of variations.) Thus, we obtain</p>
 
-<script type="math/tex; mode=display">p(x)={\rm exp}\lbrace-1+\mathbf{\lambda}^T(1,x,(x-\mu)^2)\rbrace.</script>
+<script type="math/tex; mode=display">p(x)={\rm exp}\lbrace-1+\mathbf{\lambda}^T(1,x,(x-\mu)^2)^T\rbrace.</script>
 
 <p>By careful computation, we find that $p$ is the p.d.f. of the Gaussian. And the corresponding entropy is ${\rm H}[X]=\frac{1}{2}\left(1+\ln(2\,\pi\sigma^2)\right)$, indicating that the larger the variance, the larger the entropy (of Gaussian). Note that the entropy can be negative if the variance is small enough, which different from dicrete case.</p>
 
@@ -186,11 +183,11 @@ w.l.o.g., set $h(x)=-\ln p(x)$.</p>
 
 <script type="math/tex; mode=display">{\rm I}[X, Y]=-\int p(X,Y)\ln \frac{p(X)p(Y)}{p(X,Y)}.</script>
 
-<p>Interestingly, this quantity is symmetric, and it turns out to be the difference of entropy of $X$ and the conditonal entropy of $X$ given $Y$, i.e.,</p>
+<p>Interestingly, this quantity is symmetric, and it turns out to be the difference between entropy of $X$ and the conditonal entropy of $X$ given $Y$, i.e.,</p>
 
 <script type="math/tex; mode=display">{\rm I}[X, Y]={\rm H}[X]-{\rm H}[X|Y]={\rm H}[Y|X]-{\rm H}[Y].</script>
 
-  </div><a class="u-url" href="/prml/notes/2018/10/15/Introduction-to-Information-Theory.html" hidden></a>
+  </div><a class="u-url" href="/prml/2018/10/15/Introduction-to-Information-Theory.html" hidden></a>
 </article>
 
       </div>

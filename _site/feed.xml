@@ -1,4 +1,253 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-15T19:15:39+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Rotopia</title><subtitle>Notes on theory and practice of machine learning.</subtitle><entry><title type="html">Hello</title><link href="http://localhost:4000/nothing/2018/09/12/hello.html" rel="alternate" type="text/html" title="Hello" /><published>2018-09-12T00:00:00+08:00</published><updated>2018-09-12T00:00:00+08:00</updated><id>http://localhost:4000/nothing/2018/09/12/hello</id><content type="html" xml:base="http://localhost:4000/nothing/2018/09/12/hello.html">&lt;p&gt;$a^2$&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-22T19:32:05+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Rotopia</title><subtitle>Notes on theory and practice of machine learning.</subtitle><entry><title type="html">Matrix Derivative</title><link href="http://localhost:4000/analysis/2018/10/22/matrix-calculus.html" rel="alternate" type="text/html" title="Matrix Derivative" /><published>2018-10-22T00:00:00+08:00</published><updated>2018-10-22T00:00:00+08:00</updated><id>http://localhost:4000/analysis/2018/10/22/matrix-calculus</id><content type="html" xml:base="http://localhost:4000/analysis/2018/10/22/matrix-calculus.html">&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#basics&quot; id=&quot;markdown-toc-basics&quot;&gt;Basics&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#properites-of-vectorization&quot; id=&quot;markdown-toc-properites-of-vectorization&quot;&gt;Properites of vectorization&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#useful-rules-for-element-wise-functions&quot; id=&quot;markdown-toc-useful-rules-for-element-wise-functions&quot;&gt;Useful rules for element-wise functions&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#examples&quot; id=&quot;markdown-toc-examples&quot;&gt;Examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#postscript&quot; id=&quot;markdown-toc-postscript&quot;&gt;Postscript&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Matrix derivative appears naturally in multivariable calculus, and it is widely used in deep learning. Since doing element-wise calculus is messy, we hope to find a set of compact notations and computation rules. Unfortunately, a complete solution requires arithmetic of &lt;a href=&quot;https://en.wikipedia.org/wiki/Tensor&quot;&gt;tensors&lt;/a&gt;. For example, taking matrix derivative of a matrix-valued function gives rise to a fourth-rank tensor, while we are more familiar with linear algebra. A remedy is to vetorize matrices and consider only vector-by-vector derivative. Although this may introduces tensor product and some tricky computation rules, as shown below, all we are to deal with is linear algebra.&lt;/p&gt;
+
+&lt;p&gt;We are to briefly introduce the definition of derivative and some useful computation rules, and illustrate it through some examples. For a complete introduction, readers may refer to &lt;a href=&quot;https://en.wikipedia.org/wiki/Matrix_calculus&quot;&gt;Matrix Calculus&lt;/a&gt; in wiki. For tricks in taking derivative w.r.t. matrices, readers may refer to &lt;a href=&quot;http://www4.ncsu.edu/%7Epfackler/MatCalc.pdf&quot;&gt;MatCalc&lt;/a&gt;. Both are important reference for this blog.&lt;/p&gt;
+
+&lt;h1 id=&quot;basics&quot;&gt;Basics&lt;/h1&gt;
+&lt;p&gt;Conventions&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;scalar: greek letter in lower case&lt;/li&gt;
+  &lt;li&gt;vector (in column): lower case letter&lt;/li&gt;
+  &lt;li&gt;matrix: upper case letter&lt;/li&gt;
+  &lt;li&gt;component of vector or matrix: letters with subscript&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;First, we introduce the definition of derivative of a column vector w.r.t. a row vector, which is a matrix.&lt;/p&gt;
+
+&lt;p&gt;Defnition. Vector-by-vector derivative&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$f:\mathbb{R}^n\to\mathbb{R}^m, y=f(x)$&lt;/li&gt;
+  &lt;li&gt;$\frac{\partial f}{\partial x^T}=\frac{\partial y}{\partial x^T}=\left(\frac{\partial y_i}{\partial x_j}\right)\in\mathbb{R}^{m\times n}$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Remark. Scalar-by-vector derivative (gradient) and vector-by-scalar derivative are special cases of this definition.&lt;/p&gt;
+
+&lt;p&gt;Differential is a more general concept than derivative and they are closely connected.&lt;/p&gt;
+
+&lt;p&gt;Definition. Differential&lt;/p&gt;
+
+&lt;p&gt;${\rm d}x=({\rm d}x_1,\dots,{\rm d}x_n)^T$&lt;/p&gt;
+
+&lt;p&gt;Property.&lt;/p&gt;
+
+&lt;p&gt;${\rm d}y=\frac{\partial f}{\partial x^T}{\rm d}x$&lt;/p&gt;
+
+&lt;p&gt;Remark. The form is consistent with univariate case.&lt;/p&gt;
+
+&lt;p&gt;For matrix, we introduce vectorization, and treat a matrix as a column vector.&lt;/p&gt;
+
+&lt;p&gt;Definition. Vectorization of matrix (stacking matrix in columns)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$A\in\mathbb{R}^{m\times n}$&lt;/li&gt;
+  &lt;li&gt;${\rm vec}(A)=(a_{1,1},\dots,a_{m,1},\dots,a_{n,1},\dots,a_{m,n})^T$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Remark.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Vectorization is a linear operator.&lt;/li&gt;
+  &lt;li&gt;We can vectorize the vector-by-vector derivative and compute higher derivative.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now we turn to point out some useful rules for taking derivative. Obviously, the linearity of derivative and the chain rule are the most essential ones.&lt;/p&gt;
+
+&lt;p&gt;Linearity.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$f_i:\mathbb{R}^n\to\mathbb{R}^m, y_i=f_i(x),i=1,2$&lt;/li&gt;
+  &lt;li&gt;$\frac{\partial (\alpha y_1+\beta y_2)}{\partial x^T}=\alpha\frac{\partial y_1}{\partial x^T}+\beta\frac{\partial y_2}{\partial x^T},\alpha,\beta\in\mathbb{R}$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Chain rule.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$f:\mathbb{R}^n\to\mathbb{R}^m, y=f(x)$&lt;/li&gt;
+  &lt;li&gt;$g:\mathbb{R}^m\to\mathbb{R}^p, z=g(y)$&lt;/li&gt;
+  &lt;li&gt;$\frac{\partial z}{\partial x^T}=\frac{\partial z}{\partial y^T}\frac{\partial y}{\partial x^T}$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Remark. If we define the vector-by-vector derivative in form of row-to-column, the order of the terms in the chain rule should be reversed after taking the transpose.&lt;/p&gt;
+
+&lt;h1 id=&quot;properites-of-vectorization&quot;&gt;Properites of vectorization&lt;/h1&gt;
+&lt;p&gt;Rules above are insufficient when it comes to vectorize a matrix-valued function. Therefore, we are to introduce some properties of vectorization, especially when the matrix-valued function is linear.&lt;/p&gt;
+
+&lt;p&gt;The most common case is matrix multiplication, while Kronecker product provides the best solution.&lt;/p&gt;
+
+&lt;p&gt;Definition. Kronecker product&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$A\in\mathbb{R}^{m\times n}, B\in\mathbb{R}^{p\times q}$&lt;/li&gt;
+  &lt;li&gt;$A\otimes B = (a_{ij}B)\in\mathbb{R}^{mp\times nq}$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Properties.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;${\rm vec}(AXB)=(B^T\otimes A){\rm vec}(X)$&lt;/li&gt;
+  &lt;li&gt;${\rm vec}(AX)=(I\otimes A){\rm vec}(X), {\rm vec}(XB)=(B^T\otimes I){\rm vec}(X)$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Another common linear operator is taking transpose. Define a matrix $T_{m,n}$ such that $T_{m,n}{\rm vec}(A)={\rm vec}(A^T),A\in\mathbb{R}^{m\times n}$. It can be verified that $T_{m,n}$ is a permutation matrix and thus, an orthogonal matrix.&lt;/p&gt;
+
+&lt;p&gt;Readers interested in the derivative of Kronecker product may refer to Page 7-8 in &lt;a href=&quot;http://www4.ncsu.edu/%7Epfackler/MatCalc.pdf&quot;&gt;MatCalc&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;useful-rules-for-element-wise-functions&quot;&gt;Useful rules for element-wise functions&lt;/h1&gt;
+&lt;p&gt;If $f$ is a univariate real-valued function, and $x\in\mathbb{R}^n$ is a vector, we define $f(x)$ to be $(f(x_1),\dots,f(x_n))^T$. Obviously, $\frac{\partial f}{\partial x^T}={\rm diag}\left((f’(x_1),\dots,f’(x_n))^T\right)$, where ${\rm diag}: \mathbb{R}^n\to\mathbb{R}^{n\times n}$ maps a vector to a matrix whose diagonal entries starting in the upper left corner are $x_1,\dots,x_n$.&lt;/p&gt;
+
+&lt;p&gt;For element-wise product, a.k.a. Schur product or Hadamard product, product rule in univariate case can be easily generalized to multivariate case.&lt;/p&gt;
+
+&lt;p&gt;Definition. Schur product/Hadamard product&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$A, B\in\mathbb{R}^{m\times n}$&lt;/li&gt;
+  &lt;li&gt;$A\circ B=(a_{ij}b_{ij})\in\mathbb{R}^{m\times n}$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Property.&lt;/p&gt;
+
+&lt;p&gt;$A, B\in\mathbb{R}^{m\times n},{\rm d}(A\circ B)={\rm d}A\circ B+A\circ {\rm d}(B)$&lt;/p&gt;
+
+&lt;h1 id=&quot;examples&quot;&gt;Examples&lt;/h1&gt;
+&lt;p&gt;Multilayer Perceptron&lt;/p&gt;
+
+&lt;p&gt;Model&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;number of layers: $L$&lt;/li&gt;
+  &lt;li&gt;parameters in $l$-th layer: $W^l, B^l,l=0,\dots,L$&lt;/li&gt;
+  &lt;li&gt;$C=\frac{1}{2}\left\Vert Y-A^L\right\Vert^2_F$&lt;/li&gt;
+  &lt;li&gt;$A^l=\sigma\left(Z^l\right)$&lt;/li&gt;
+  &lt;li&gt;$Z^l=W^lA^{l-1}+B^l$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Derivatives&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$\frac{\partial C}{\partial {\rm vec}(A^L)^T}={\rm vec}\left(Y-A^L\right)^T$&lt;/li&gt;
+  &lt;li&gt;$\frac{\partial C}{\partial {\rm vec}(Z^l)^T}
+=\frac{\partial L}{\partial {\rm vec}(Z^{l+1})^T}\frac{\partial {\rm vec}(Z^{l+1})}{\partial {\rm vec}(A^l)^T}\frac{\partial {\rm vec}(A^{l})}{\partial {\rm vec}(Z^l)^T}
+=\frac{\partial L}{\partial {\rm vec}(Z^{l+1})^T}\left(I\otimes {W^{l+1}}^T\right)
+{\rm diag}\left({\rm vec}\left(\sigma’(Z^l)\right)\right)$&lt;/li&gt;
+  &lt;li&gt;$\frac{\partial C}{\partial {\rm vec}(B^l)^T}=\frac{\partial C}{\partial {\rm vec}(Z^l)^T}\frac{\partial {\rm vec}(Z^l)}{\partial {\rm vec}(B^l)^T}=\frac{\partial C}{\partial {\rm vec}(Z^l)^T}$&lt;/li&gt;
+  &lt;li&gt;$\frac{\partial C}{\partial {\rm vec}(W^l)^T}
+=\frac{\partial C}{\partial {\rm vec}(Z^l)^T}\frac{\partial {\rm vec}(Z^l)}{\partial {\rm vec}(W^l)^T}
+=\frac{\partial C}{\partial {\rm vec}(Z^l)^T}\left({A^{l-1}}^T\otimes I\right)$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Denote ${\delta^l}^T=\frac{\partial C}{\partial {\rm vec}(Z^l)^T}$. We can compute ${\delta^l}^T$ recursively and obtain $\frac{\partial C}{\partial {\rm vec}(B^l)^T}$ and $\frac{\partial C}{\partial {\rm vec}(W^l)^T}$.&lt;/p&gt;
+
+&lt;h1 id=&quot;postscript&quot;&gt;Postscript&lt;/h1&gt;
+&lt;p&gt;Although the method above simplifies some expressions of derivatives, computing the intermediate derivatives may require more memory, which can be impractical. For example, to derive a scalar-by-matrix derivative $\frac{\partial C}{\partial {\rm vec}(W^l)^T}$ in MLP (usually our objective is a real-valued function), we may have to compute a matrix-by-matrix derivative that requires Kronecker product, like ${A^{l-1}}^T\otimes I$, which is sparse and large, making the computation less efficient. Maybe I should read the source code of automatic differentiation in some deep learning frameworks, such as &lt;a href=&quot;https://pytorch.org/&quot;&gt;PyTorch&lt;/a&gt; to find a compromise between compact expression and efficient implemetation. This remains to be done.&lt;/p&gt;</content><author><name></name></author><summary type="html">Matrix derivative appears naturally in multivariable calculus, and it is widely used in deep learning. Since doing element-wise calculus is messy, we hope to find a set of compact notations and computation rules. Unfortunately, a complete solution requires arithmetic of tensors. For example, taking matrix derivative of a matrix-valued function gives rise to a fourth-rank tensor, while we are more familiar with linear algebra. A remedy is to vetorize matrices and consider only vector-by-vector derivative. Although this may introduces tensor product and some tricky computation rules, as shown below, all we are to deal with is linear algebra.</summary></entry><entry><title type="html">Introduction to Information Theory</title><link href="http://localhost:4000/prml/2018/10/15/Introduction-to-Information-Theory.html" rel="alternate" type="text/html" title="Introduction to Information Theory" /><published>2018-10-15T00:00:00+08:00</published><updated>2018-10-15T00:00:00+08:00</updated><id>http://localhost:4000/prml/2018/10/15/Introduction-to-Information-Theory</id><content type="html" xml:base="http://localhost:4000/prml/2018/10/15/Introduction-to-Information-Theory.html">&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#two-ways-to-introduce-entropy&quot; id=&quot;markdown-toc-two-ways-to-introduce-entropy&quot;&gt;Two ways to introduce entropy&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#a-heuristic-motivation&quot; id=&quot;markdown-toc-a-heuristic-motivation&quot;&gt;A heuristic motivation&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#a-measure-of-disorder-in-statistical-mechanics&quot; id=&quot;markdown-toc-a-measure-of-disorder-in-statistical-mechanics&quot;&gt;A measure of disorder in statistical mechanics&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#find-maximum-entropy-probability-distribution&quot; id=&quot;markdown-toc-find-maximum-entropy-probability-distribution&quot;&gt;Find maximum entropy probability distribution&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#relative-entropy-and-mutual-information&quot; id=&quot;markdown-toc-relative-entropy-and-mutual-information&quot;&gt;Relative entropy and mutual information&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Chapter 1.6&lt;/p&gt;
+&lt;h1 id=&quot;two-ways-to-introduce-entropy&quot;&gt;Two ways to introduce entropy&lt;/h1&gt;
+&lt;h2 id=&quot;a-heuristic-motivation&quot;&gt;A heuristic motivation&lt;/h2&gt;
+&lt;p&gt;Intuition: Information increases as uncertainty increases. Thus, we model an event as a random variable $X$ and look for a quantiy $h(x)$ to measure the uncertainty.&lt;/p&gt;
+
+&lt;p&gt;Required Properties:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$h$ must be nonnegative&lt;/li&gt;
+  &lt;li&gt;$h$ is monotonic w.r.t. $p$&lt;/li&gt;
+  &lt;li&gt;$X\perp Y\Rightarrow h(x,y)=h(x)+h(y)$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Induced form: $h$ must be the negative logarithm of $p$.
+w.l.o.g., set $h(x)=-\ln p(x)$.&lt;/p&gt;
+
+&lt;p&gt;$h(x)$ measures the uncertainty of event $X=x$. To measure the uncertainty of $X$, we use the mathematical expectation of $h$, i.e., ${\rm H}[X]=\mathbb{E}[h]$.&lt;/p&gt;
+
+&lt;h2 id=&quot;a-measure-of-disorder-in-statistical-mechanics&quot;&gt;A measure of disorder in statistical mechanics&lt;/h2&gt;
+&lt;p&gt;Problem. Given $N$ objects and $K$ bins, find the best way of arrangement that minimize the effect of rearrangements. That is, we aim to minimize the &lt;em&gt;multiplicity&lt;/em&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;W=\frac{N!}{\prod^K_i n_i!},{\rm s.t.}, \sum n_i=N.&lt;/script&gt;
+
+&lt;p&gt;By taking logarithm and scaling with $N^{-1}$, we get the entropy&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;{\rm H}=\frac{1}{N}\ln W=\frac{1}{N} N!-\frac{1}{N}\sum\ln n_i!.&lt;/script&gt;
+
+&lt;p&gt;We are to show that this definition is consistent with the heuristic definition above by considering the limit of ${\rm H}$ as $N\to \infty$.&lt;/p&gt;
+
+&lt;p&gt;Recalling Stirling’s approximation&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\ln N!=N\ln N - N + O(\ln N),&lt;/script&gt;
+
+&lt;p&gt;the entropy can be rewritten as&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+{\rm H}
+&amp;=\frac{1}{N}\sum_i n_i(\ln N - 1 + O(\ln N))-\frac{1}{N}\sum_i (n_i\ln n_i - n_i + O(\ln n_i))\\
+&amp;=-\sum_i\frac{n_i}{N}\ln \frac{n_i}{N}+\frac{O(\ln N)}{N} - \frac{1}{N}\sum_i O(\ln n_i).
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Taking $N\to\infty$, we have&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\lim_{N\to\infty}{\rm H}=-\sum_{i}p_i\ln p_i,\,{\rm where}\,p_i=\lim_{N\to\infty}\frac{n_i}{N}.&lt;/script&gt;
+
+&lt;p&gt;Definition of entropy can be applied to conditional cases. Suppose that we have 2 sets of variables, $X$ and $Y$, where $X$ is already known. Then then the additional information needed to specify w.r.t. $Y$ is $\ln p(Y|X)$. Thus, we define the &lt;em&gt;conditonal entropy&lt;/em&gt; of $Y$ given $X$ as&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;{\rm H}[Y\vert X]=-\int p(Y,X)\ln p(Y\vert X).&lt;/script&gt;
+
+&lt;h1 id=&quot;find-maximum-entropy-probability-distribution&quot;&gt;Find maximum entropy probability distribution&lt;/h1&gt;
+&lt;p&gt;Naturally, we hope to maximize the entropy w.r.t. p. Note that this is contraint by the normalization constraint on the probabilities. By adding a Lagrange multiplier, we convert it to be an uncontaint optimization problem. That is, we turn to maximize&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;{\rm \widetilde{H}}[X]={\rm H}[X]+\lambda\left(\int p(x)\,{\rm d}x-1\right).&lt;/script&gt;
+
+&lt;p&gt;By taking gradient w.r.t. $p$, it is easy to show that uniform distribution minimizes the entropy in discrete case. While in continuous case, we have to deal with the derivative w.r.t. $p$, a continuous function, a subject in &lt;a href=&quot;https://en.wikipedia.org/wiki/Calculus_of_variations&quot;&gt;calculus of variations&lt;/a&gt;. A detailed dsicussion of calculus of variations is out of scope of this blog. Instead, we just introduce the concept of &lt;a href=&quot;https://en.wikipedia.org/wiki/Functional_derivative&quot;&gt;functional derivative&lt;/a&gt; and the simple calculation rule.&lt;/p&gt;
+
+&lt;p&gt;Defnition. Functional derivative&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$M$: a &lt;a href=&quot;https://en.wikipedia.org/wiki/Manifold&quot;&gt;manifold&lt;/a&gt; representing functions $\rho$&lt;/li&gt;
+  &lt;li&gt;$F:M\to\mathbb{R}$: a real valued &lt;a href=&quot;https://en.wikipedia.org/wiki/Functional_(mathematics)&quot;&gt;funtional&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The functional derivative of $F[\rho]$, denoted as $\frac{\delta F}{\delta \rho}$, is defined by&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\int \frac{\delta F}{\delta \rho}\phi(x)\,{\rm d}x=\lim_{\epsilon\to 0}\frac{F[\rho+\epsilon\phi]-F[\rho]}{\epsilon},\forall\phi\in M.&lt;/script&gt;
+
+&lt;p&gt;Usually, $F$ is  expressed in terms of an integral of a fucntion, say $L$. If $L$ is a function of $x,\rho,\,{\rm and\,}\rho’$, we obtain simple explicit forms of the functional derevative, i.e.,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;F[\rho]=\int L[x,\rho,\rho'], \frac{\delta F}{\delta \rho}=\frac{\partial L}{\partial \rho}-\frac{\rm d}{\rm d \it x}\frac{\partial L}{\partial \rho'}.&lt;/script&gt;
+
+&lt;p&gt;In order for this maximum to be well defined, it will be necessary to constrain the first and second moments of $X$ as well as preserving the normalization constraint. 
+(Indeed, I don’t understand why adding these two addtional constraints.) Therefore, we turn to maximize&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;{\rm H}[X; \mathbf{\lambda}]={\rm H}[X] + \mathbf{\lambda}^T\left(\int p - 1, \int xp-\mu,\int(x-\mu)^2p-\sigma^2\right)^T, \mathbf{\lambda}\in\mathbb{R}^3.&lt;/script&gt;
+
+&lt;p&gt;Using the computation rule of functional derivative, we have&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\delta {\rm H}}{\delta p}=-(1+\ln p)+\mathbf{\lambda}^T(1,x,(x-\mu)^2)^T.&lt;/script&gt;
+
+&lt;p&gt;${\rm H}$ is maximized when its functional derivative is zero. (Maybe igorous argument can be found in texts on calculus of variations.) Thus, we obtain&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;p(x)={\rm exp}\lbrace-1+\mathbf{\lambda}^T(1,x,(x-\mu)^2)^T\rbrace.&lt;/script&gt;
+
+&lt;p&gt;By careful computation, we find that $p$ is the p.d.f. of the Gaussian. And the corresponding entropy is ${\rm H}[X]=\frac{1}{2}\left(1+\ln(2\,\pi\sigma^2)\right)$, indicating that the larger the variance, the larger the entropy (of Gaussian). Note that the entropy can be negative if the variance is small enough, which different from dicrete case.&lt;/p&gt;
+
+&lt;h1 id=&quot;relative-entropy-and-mutual-information&quot;&gt;Relative entropy and mutual information&lt;/h1&gt;
+&lt;p&gt;Problem. Given an unkown distribution $p$, we approximate it with $q$. The difference between them is the additional information. We can quantify it as&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;{\rm KL}(p\|q)=-\int p\ln q - \left(-\int p\ln p\right)=-\int p\ln\frac{q}{p}.&lt;/script&gt;
+
+&lt;p&gt;This is called &lt;em&gt;Kullback-Leibler divergence&lt;/em&gt; or &lt;em&gt;relative entropy&lt;/em&gt;. Note that this quantity is asymmetric. It is notable to show that relative entropy is nonnegative through convexity.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;{\rm KL}(p\|q)=-\int p\ln\frac{q}{p} = \mathbb{E}\left[-\ln \frac{q}{p}\right]
+\geq -\ln \mathbb{E}\left[\frac{q}{p} \right]=0.&lt;/script&gt;
+
+&lt;p&gt;The equality holds iff $q=p,\forall x\in\mathbb{R}$.&lt;/p&gt;
+
+&lt;p&gt;Furthermore, we can use Kullback-Leibler divergence to measure the independence or &lt;em&gt;mutual information&lt;/em&gt; between two sets of variables, $X$ and $Y$. That is,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;{\rm I}[X, Y]=-\int p(X,Y)\ln \frac{p(X)p(Y)}{p(X,Y)}.&lt;/script&gt;
+
+&lt;p&gt;Interestingly, this quantity is symmetric, and it turns out to be the difference between entropy of $X$ and the conditonal entropy of $X$ given $Y$, i.e.,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;{\rm I}[X, Y]={\rm H}[X]-{\rm H}[X|Y]={\rm H}[Y|X]-{\rm H}[Y].&lt;/script&gt;</content><author><name></name></author><summary type="html">Two ways to introduce entropy A heuristic motivation Chapter 1.6 Two ways to introduce entropy A heuristic motivation Intuition: Information increases as uncertainty increases. Thus, we model an event as a random variable $X$ and look for a quantiy $h(x)$ to measure the uncertainty.</summary></entry><entry><title type="html">Hello</title><link href="http://localhost:4000/nothing/2018/09/12/hello.html" rel="alternate" type="text/html" title="Hello" /><published>2018-09-12T00:00:00+08:00</published><updated>2018-09-12T00:00:00+08:00</updated><id>http://localhost:4000/nothing/2018/09/12/hello</id><content type="html" xml:base="http://localhost:4000/nothing/2018/09/12/hello.html">&lt;p&gt;$a^2$&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{equation}
 \{a\}

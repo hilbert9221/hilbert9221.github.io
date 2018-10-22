@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      TeX: {
+        equationNumbers: {
+          autoNumber: "AMS"
+        }
+      },
+      tex2jax: {
+        inlineMath: [ ['$','$'] ],
+        displayMath: [ ['$$','$$'] ],
+        processEscapes: true,
+      }
+    });
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+      
+  </head><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Matrix Derivative | Rotopia</title>
+<meta name="generator" content="Jekyll v3.8.4" />
+<meta property="og:title" content="Matrix Derivative" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Matrix derivative appears naturally in multivariable calculus, and it is widely used in deep learning. Since doing element-wise calculus is messy, we hope to find a set of compact notations and computation rules. Unfortunately, a complete solution requires arithmetic of tensors. For example, taking matrix derivative of a matrix-valued function gives rise to a fourth-rank tensor, while we are more familiar with linear algebra. A remedy is to vetorize matrices and consider only vector-by-vector derivative. Although this may introduces tensor product and some tricky computation rules, as shown below, all we are to deal with is linear algebra." />
+<meta property="og:description" content="Matrix derivative appears naturally in multivariable calculus, and it is widely used in deep learning. Since doing element-wise calculus is messy, we hope to find a set of compact notations and computation rules. Unfortunately, a complete solution requires arithmetic of tensors. For example, taking matrix derivative of a matrix-valued function gives rise to a fourth-rank tensor, while we are more familiar with linear algebra. A remedy is to vetorize matrices and consider only vector-by-vector derivative. Although this may introduces tensor product and some tricky computation rules, as shown below, all we are to deal with is linear algebra." />
+<link rel="canonical" href="http://localhost:4000/analysis/2018/10/22/matrix-calculus.html" />
+<meta property="og:url" content="http://localhost:4000/analysis/2018/10/22/matrix-calculus.html" />
+<meta property="og:site_name" content="Rotopia" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-10-22T00:00:00+08:00" />
+<script type="application/ld+json">
+{"headline":"Matrix Derivative","dateModified":"2018-10-22T00:00:00+08:00","datePublished":"2018-10-22T00:00:00+08:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/analysis/2018/10/22/matrix-calculus.html"},"url":"http://localhost:4000/analysis/2018/10/22/matrix-calculus.html","description":"Matrix derivative appears naturally in multivariable calculus, and it is widely used in deep learning. Since doing element-wise calculus is messy, we hope to find a set of compact notations and computation rules. Unfortunately, a complete solution requires arithmetic of tensors. For example, taking matrix derivative of a matrix-valued function gives rise to a fourth-rank tensor, while we are more familiar with linear algebra. A remedy is to vetorize matrices and consider only vector-by-vector derivative. Although this may introduces tensor product and some tricky computation rules, as shown below, all we are to deal with is linear algebra.","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Rotopia" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Rotopia</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/categories/">Categories</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="post-categories">
+        
+        
+        <a href="/categories/#Analysis">Analysis</a>
+        
+        
+      </div>
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Matrix Derivative</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-10-22T00:00:00+08:00" itemprop="datePublished">Oct 22, 2018
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="markdown-toc">
+  <li><a href="#basics" id="markdown-toc-basics">Basics</a></li>
+  <li><a href="#properites-of-vectorization" id="markdown-toc-properites-of-vectorization">Properites of vectorization</a></li>
+  <li><a href="#useful-rules-for-element-wise-functions" id="markdown-toc-useful-rules-for-element-wise-functions">Useful rules for element-wise functions</a></li>
+  <li><a href="#examples" id="markdown-toc-examples">Examples</a></li>
+  <li><a href="#postscript" id="markdown-toc-postscript">Postscript</a></li>
+</ul>
+<p>Matrix derivative appears naturally in multivariable calculus, and it is widely used in deep learning. Since doing element-wise calculus is messy, we hope to find a set of compact notations and computation rules. Unfortunately, a complete solution requires arithmetic of <a href="https://en.wikipedia.org/wiki/Tensor">tensors</a>. For example, taking matrix derivative of a matrix-valued function gives rise to a fourth-rank tensor, while we are more familiar with linear algebra. A remedy is to vetorize matrices and consider only vector-by-vector derivative. Although this may introduces tensor product and some tricky computation rules, as shown below, all we are to deal with is linear algebra.</p>
+
+<p>We are to briefly introduce the definition of derivative and some useful computation rules, and illustrate it through some examples. For a complete introduction, readers may refer to <a href="https://en.wikipedia.org/wiki/Matrix_calculus">Matrix Calculus</a> in wiki. For tricks in taking derivative w.r.t. matrices, readers may refer to <a href="http://www4.ncsu.edu/%7Epfackler/MatCalc.pdf">MatCalc</a>. Both are important reference for this blog.</p>
+
+<h1 id="basics">Basics</h1>
+<p>Conventions</p>
+<ul>
+  <li>scalar: greek letter in lower case</li>
+  <li>vector (in column): lower case letter</li>
+  <li>matrix: upper case letter</li>
+  <li>component of vector or matrix: letters with subscript</li>
+</ul>
+
+<p>First, we introduce the definition of derivative of a column vector w.r.t. a row vector, which is a matrix.</p>
+
+<p>Defnition. Vector-by-vector derivative</p>
+<ul>
+  <li>$f:\mathbb{R}^n\to\mathbb{R}^m, y=f(x)$</li>
+  <li>$\frac{\partial f}{\partial x^T}=\frac{\partial y}{\partial x^T}=\left(\frac{\partial y_i}{\partial x_j}\right)\in\mathbb{R}^{m\times n}$</li>
+</ul>
+
+<p>Remark. Scalar-by-vector derivative (gradient) and vector-by-scalar derivative are special cases of this definition.</p>
+
+<p>Differential is a more general concept than derivative and they are closely connected.</p>
+
+<p>Definition. Differential</p>
+
+<p>${\rm d}x=({\rm d}x_1,\dots,{\rm d}x_n)^T$</p>
+
+<p>Property.</p>
+
+<p>${\rm d}y=\frac{\partial f}{\partial x^T}{\rm d}x$</p>
+
+<p>Remark. The form is consistent with univariate case.</p>
+
+<p>For matrix, we introduce vectorization, and treat a matrix as a column vector.</p>
+
+<p>Definition. Vectorization of matrix (stacking matrix in columns)</p>
+<ul>
+  <li>$A\in\mathbb{R}^{m\times n}$</li>
+  <li>${\rm vec}(A)=(a_{1,1},\dots,a_{m,1},\dots,a_{n,1},\dots,a_{m,n})^T$</li>
+</ul>
+
+<p>Remark.</p>
+<ul>
+  <li>Vectorization is a linear operator.</li>
+  <li>We can vectorize the vector-by-vector derivative and compute higher derivative.</li>
+</ul>
+
+<p>Now we turn to point out some useful rules for taking derivative. Obviously, the linearity of derivative and the chain rule are the most essential ones.</p>
+
+<p>Linearity.</p>
+<ul>
+  <li>$f_i:\mathbb{R}^n\to\mathbb{R}^m, y_i=f_i(x),i=1,2$</li>
+  <li>$\frac{\partial (\alpha y_1+\beta y_2)}{\partial x^T}=\alpha\frac{\partial y_1}{\partial x^T}+\beta\frac{\partial y_2}{\partial x^T},\alpha,\beta\in\mathbb{R}$</li>
+</ul>
+
+<p>Chain rule.</p>
+<ul>
+  <li>$f:\mathbb{R}^n\to\mathbb{R}^m, y=f(x)$</li>
+  <li>$g:\mathbb{R}^m\to\mathbb{R}^p, z=g(y)$</li>
+  <li>$\frac{\partial z}{\partial x^T}=\frac{\partial z}{\partial y^T}\frac{\partial y}{\partial x^T}$</li>
+</ul>
+
+<p>Remark. If we define the vector-by-vector derivative in form of row-to-column, the order of the terms in the chain rule should be reversed after taking the transpose.</p>
+
+<h1 id="properites-of-vectorization">Properites of vectorization</h1>
+<p>Rules above are insufficient when it comes to vectorize a matrix-valued function. Therefore, we are to introduce some properties of vectorization, especially when the matrix-valued function is linear.</p>
+
+<p>The most common case is matrix multiplication, while Kronecker product provides the best solution.</p>
+
+<p>Definition. Kronecker product</p>
+<ul>
+  <li>$A\in\mathbb{R}^{m\times n}, B\in\mathbb{R}^{p\times q}$</li>
+  <li>$A\otimes B = (a_{ij}B)\in\mathbb{R}^{mp\times nq}$</li>
+</ul>
+
+<p>Properties.</p>
+<ul>
+  <li>${\rm vec}(AXB)=(B^T\otimes A){\rm vec}(X)$</li>
+  <li>${\rm vec}(AX)=(I\otimes A){\rm vec}(X), {\rm vec}(XB)=(B^T\otimes I){\rm vec}(X)$</li>
+</ul>
+
+<p>Another common linear operator is taking transpose. Define a matrix $T_{m,n}$ such that $T_{m,n}{\rm vec}(A)={\rm vec}(A^T),A\in\mathbb{R}^{m\times n}$. It can be verified that $T_{m,n}$ is a permutation matrix and thus, an orthogonal matrix.</p>
+
+<p>Readers interested in the derivative of Kronecker product may refer to Page 7-8 in <a href="http://www4.ncsu.edu/%7Epfackler/MatCalc.pdf">MatCalc</a>.</p>
+
+<h1 id="useful-rules-for-element-wise-functions">Useful rules for element-wise functions</h1>
+<p>If $f$ is a univariate real-valued function, and $x\in\mathbb{R}^n$ is a vector, we define $f(x)$ to be $(f(x_1),\dots,f(x_n))^T$. Obviously, $\frac{\partial f}{\partial x^T}={\rm diag}\left((f’(x_1),\dots,f’(x_n))^T\right)$, where ${\rm diag}: \mathbb{R}^n\to\mathbb{R}^{n\times n}$ maps a vector to a matrix whose diagonal entries starting in the upper left corner are $x_1,\dots,x_n$.</p>
+
+<p>For element-wise product, a.k.a. Schur product or Hadamard product, product rule in univariate case can be easily generalized to multivariate case.</p>
+
+<p>Definition. Schur product/Hadamard product</p>
+<ul>
+  <li>$A, B\in\mathbb{R}^{m\times n}$</li>
+  <li>$A\circ B=(a_{ij}b_{ij})\in\mathbb{R}^{m\times n}$</li>
+</ul>
+
+<p>Property.</p>
+
+<p>$A, B\in\mathbb{R}^{m\times n},{\rm d}(A\circ B)={\rm d}A\circ B+A\circ {\rm d}(B)$</p>
+
+<h1 id="examples">Examples</h1>
+<p>Multilayer Perceptron</p>
+
+<p>Model</p>
+<ul>
+  <li>number of layers: $L$</li>
+  <li>parameters in $l$-th layer: $W^l, B^l,l=0,\dots,L$</li>
+  <li>$C=\frac{1}{2}\left\Vert Y-A^L\right\Vert^2_F$</li>
+  <li>$A^l=\sigma\left(Z^l\right)$</li>
+  <li>$Z^l=W^lA^{l-1}+B^l$</li>
+</ul>
+
+<p>Derivatives</p>
+<ul>
+  <li>$\frac{\partial C}{\partial {\rm vec}(A^L)^T}={\rm vec}\left(Y-A^L\right)^T$</li>
+  <li>$\frac{\partial C}{\partial {\rm vec}(Z^l)^T}
+=\frac{\partial L}{\partial {\rm vec}(Z^{l+1})^T}\frac{\partial {\rm vec}(Z^{l+1})}{\partial {\rm vec}(A^l)^T}\frac{\partial {\rm vec}(A^{l})}{\partial {\rm vec}(Z^l)^T}
+=\frac{\partial L}{\partial {\rm vec}(Z^{l+1})^T}\left(I\otimes {W^{l+1}}^T\right)
+{\rm diag}\left({\rm vec}\left(\sigma’(Z^l)\right)\right)$</li>
+  <li>$\frac{\partial C}{\partial {\rm vec}(B^l)^T}=\frac{\partial C}{\partial {\rm vec}(Z^l)^T}\frac{\partial {\rm vec}(Z^l)}{\partial {\rm vec}(B^l)^T}=\frac{\partial C}{\partial {\rm vec}(Z^l)^T}$</li>
+  <li>$\frac{\partial C}{\partial {\rm vec}(W^l)^T}
+=\frac{\partial C}{\partial {\rm vec}(Z^l)^T}\frac{\partial {\rm vec}(Z^l)}{\partial {\rm vec}(W^l)^T}
+=\frac{\partial C}{\partial {\rm vec}(Z^l)^T}\left({A^{l-1}}^T\otimes I\right)$</li>
+</ul>
+
+<p>Denote ${\delta^l}^T=\frac{\partial C}{\partial {\rm vec}(Z^l)^T}$. We can compute ${\delta^l}^T$ recursively and obtain $\frac{\partial C}{\partial {\rm vec}(B^l)^T}$ and $\frac{\partial C}{\partial {\rm vec}(W^l)^T}$.</p>
+
+<h1 id="postscript">Postscript</h1>
+<p>Although the method above simplifies some expressions of derivatives, computing the intermediate derivatives may require more memory, which can be impractical. For example, to derive a scalar-by-matrix derivative $\frac{\partial C}{\partial {\rm vec}(W^l)^T}$ in MLP (usually our objective is a real-valued function), we may have to compute a matrix-by-matrix derivative that requires Kronecker product, like ${A^{l-1}}^T\otimes I$, which is sparse and large, making the computation less efficient. Maybe I should read the source code of automatic differentiation in some deep learning frameworks, such as <a href="https://pytorch.org/">PyTorch</a> to find a compromise between compact expression and efficient implemetation. This remains to be done.</p>
+
+  </div><a class="u-url" href="/analysis/2018/10/22/matrix-calculus.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Rotopia</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Rotopia</li><li><a class="u-email" href="mailto:hilbert9221@gmail.com">hilbert9221@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/hilbert9221"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">hilbert9221</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Notes on theory and practice of machine learning.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Introduction to Information Theory
-categories: PRML Notes
+categories: PRML
 use_math: True
 ---
 * TOC
