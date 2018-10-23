@@ -6,16 +6,16 @@ use_math: True
 ---
 * TOC
 {:toc}
-Matrix derivative appears naturally in multivariable calculus, and it is widely used in deep learning. Since doing element-wise calculus is messy, we hope to find a set of compact notations and computation rules. Unfortunately, a complete solution requires arithmetic of [tensors](https://en.wikipedia.org/wiki/Tensor). For example, taking matrix derivative of a matrix-valued function gives rise to a fourth-rank tensor, while we are more familiar with linear algebra. A remedy is to vetorize matrices and consider only vector-by-vector derivative. Although this may introduces tensor product and some tricky computation rules, as shown below, all we are to deal with is linear algebra. 
+Matrix derivative appears naturally in multivariable calculus, and it is widely used in deep learning. Since doing element-wise calculus is messy, we hope to find a set of compact notations and effective computation rules. Unfortunately, a complete solution requires arithmetic of [tensors](https://en.wikipedia.org/wiki/Tensor). For example, taking matrix derivative of a matrix-valued function gives rise to a fourth-rank tensor, while we are more familiar with linear algebra. A remedy is to vetorize matrices and consider only vector-by-vector derivative. Although this may introduces tensor product and some tricky computation rules, as shown below, all we have to deal with is linear algebra. 
 
 We are to briefly introduce the definition of derivative and some useful computation rules, and illustrate it through some examples. For a complete introduction, readers may refer to [Matrix Calculus](https://en.wikipedia.org/wiki/Matrix_calculus) in wiki. For tricks in taking derivative w.r.t. matrices, readers may refer to [MatCalc](http://www4.ncsu.edu/%7Epfackler/MatCalc.pdf). Both are important reference for this blog.
 
 # Basics
 Conventions
-- scalar: greek letter in lower case
-- vector (in column): lower case letter
-- matrix: upper case letter
-- component of vector or matrix: letters with subscript
+- scalar: greek letter in lower case, e.g. $\alpha$.
+- vector (in column): lower case letter, e.g. $x$.
+- matrix: upper case letter, e.g. $A$.
+- component of vector or matrix: letters with subscript, e.g. $x_1$.
 
 First, we introduce the definition of derivative of a column vector w.r.t. a row vector, which is a matrix.
 
@@ -45,9 +45,9 @@ Definition. Vectorization of matrix (stacking matrix in columns)
 
 Remark.
 - Vectorization is a linear operator.
-- We can vectorize the vector-by-vector derivative and compute higher derivative.
+- We can vectorize the vector-by-vector derivative and compute higher order derivatives.
 
-Now we turn to point out some useful rules for taking derivative. Obviously, the linearity of derivative and the chain rule are the most essential ones.
+Now we turn to point out some useful rules for taking derivatives. Obviously, the linearity of derivative and the chain rule are the most essential ones.
 
 Linearity.
 - $f_i:\mathbb{R}^n\to\mathbb{R}^m, y_i=f_i(x),i=1,2$
@@ -91,20 +91,52 @@ Property.
 $A, B\in\mathbb{R}^{m\times n},{\rm d}(A\circ B)={\rm d}A\circ B+A\circ {\rm d}(B)$
 
 # Examples
-Multilayer Perceptron
+
+## Softmax Regression
+The first example is [softmax regression](http://ufldl.stanford.edu/tutorial/supervised/SoftmaxRegression/), a widely used in multiclass classification probelm. We only consider the loss of a single sample to illustrate the rules above.
+
+Model
+- linear mapping: $z=\Theta x,\Theta\in\mathbb{R}^{k\times(n+1)},x\in\mathbb{R}^{n+1}$
+- softmax: $a=\frac{e^z}{\mathbf{1}^T e^z}$
+- loss: $C=-\mathbf{1}^T(y\circ \log(a)),y\in\mathbb{R}^k$ is the one-hot representation of the label.
+
+Derivatives
+
+- $\frac{\partial C}{\partial a^T}
+=-\frac{\partial(y\circ \log(a))}{\partial a^T}
+=-y^T\circ \frac{\partial\log(a)}{\partial a^T}
+=-\left(\frac{y}{a}\right)^T$
+- $\frac{\partial a}{\partial z^T}
+=\frac{1}{\mathbf{1}^T e^z}\frac{\partial e^z}{\partial z^T}+e^z\frac{\partial (\mathbf{1}^T e^z)}{\partial z^T}
+=\frac{ {\rm diag}(e^z)}{\mathbf{1}^T e^z}
+-\frac{e^z{e^z}^T}{(\mathbf{1}^T e^z)^2}
+={\rm diag}\left(\frac{e^z}{\mathbf{1}^T e^z}\right)-\frac{e^z}{\mathbf{1}^T e^z}\frac{ {e^z}^T}{\mathbf{1}^T e^z}
+={\rm diag}(a)-aa^T$
+- $\frac{\partial a}{\partial {\rm vec}(\Theta)^T}
+=x^T\otimes I\Leftarrow{\rm vec}(\Theta x)=(x^T\otimes I){\rm vec}(\Theta)$
+
+Combining the formulas above, we obtain 
+
+$\frac{\partial C}{\partial {\rm vec}(\Theta)^T}
+=-\left(\frac{y}{a}\right)^T\left({\rm diag}(a)-aa^T\right)\left(x^T\otimes I\right)
+=y^T(\mathbf{1}a^T-I)\left(x^T\otimes I\right).$
+
+
+## Multilayer Perceptron
+When considering the loss of multiple samples, i.e., our input is a matrix with each column as the feature of a sample, we have to deal with matrix-by-matrix derivatives and that requires more tricks related to Kronecker product. We will take [multilayer perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron) as an example. For the case of single sample, [Micheal Nielsen's blog](http://neuralnetworksanddeeplearning.com/chap2.html) provides an excellent derivation.
 
 Model
 - number of layers: $L$
 - parameters in $l$-th layer: $W^l, B^l,l=0,\dots,L$
-- $C=\frac{1}{2}\left\Vert Y-A^L\right\Vert^2_F$
-- $A^l=\sigma\left(Z^l\right)$
-- $Z^l=W^lA^{l-1}+B^l$
+- loss: $C=\frac{1}{2}\left\Vert Y-A^L\right\Vert^2_F$
+- activation: $A^l=\sigma\left(Z^l\right)$
+- linear layer: $Z^l=W^lA^{l-1}+B^l$
 
 Derivatives
 - $\frac{\partial C}{\partial {\rm vec}(A^L)^T}={\rm vec}\left(Y-A^L\right)^T$
 - $\frac{\partial C}{\partial {\rm vec}(Z^l)^T}
 =\frac{\partial L}{\partial {\rm vec}(Z^{l+1})^T}\frac{\partial {\rm vec}(Z^{l+1})}{\partial {\rm vec}(A^l)^T}\frac{\partial {\rm vec}(A^{l})}{\partial {\rm vec}(Z^l)^T}
-=\frac{\partial L}{\partial {\rm vec}(Z^{l+1})^T}\left(I\otimes {W^{l+1}}^T\right)
+=\frac{\partial L}{\partial {\rm vec}(Z^{l+1})^T}\left(I\otimes W^{l+1}\right)
 {\rm diag}\left({\rm vec}\left(\sigma'(Z^l)\right)\right)$
 - $\frac{\partial C}{\partial {\rm vec}(B^l)^T}=\frac{\partial C}{\partial {\rm vec}(Z^l)^T}\frac{\partial {\rm vec}(Z^l)}{\partial {\rm vec}(B^l)^T}=\frac{\partial C}{\partial {\rm vec}(Z^l)^T}$
 - $\frac{\partial C}{\partial {\rm vec}(W^l)^T}
