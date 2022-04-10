@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-I am currently a second-year Ph.D. student in School of Comupter Science and Engineering, Sun Yat-sen University. I am advised by Prof. [Jiahai Wang](http://cse.sysu.edu.cn/content/2551). Here is my latest [cv](/files/CV_Siyuan_Chen_SYSU.pdf).
+I am currently a 4th year Ph.D. student in School of Comupter Science and Engineering, Sun Yat-sen University. I am advised by Prof. [Jiahai Wang](http://cse.sysu.edu.cn/content/2551). Here is my latest [cv](/files/CV_Siyuan_Chen_SYSU.pdf).
 
 My research focuses on graph neural networks (GNNs) and graph representation learning. Currently I am applying GNNs to model the dynamics of complex systems (e.g. urban traffic system), hoping to reveal how interactions of individuals at the microscopic level lead to the emergence of intelligence at the macroscopic level. Besides, I am also interested in user identity linkage, which attempts to link accounts belonging to the same person across different social networks.
 
