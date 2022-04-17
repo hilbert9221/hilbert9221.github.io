@@ -33,3 +33,6 @@ Email: chensy47 AT mail2.sysu.edu.cn
 
 # Academic Service
 Peer reviewer for AAAI 2021.
+
+# Misc
+I maintain a technical blog in Chinese [here](https://www.cnblogs.com/hilbert9221/).
