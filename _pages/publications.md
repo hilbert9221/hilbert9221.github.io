@@ -5,7 +5,7 @@ permalink: /publications/
 author_profile: true
 ---
 
-1. [**Heterogeneous Interaction Modeling With Reduced Accumulated Error for Multi-Agent Trajectory Prediction.**](https://doi.org/10.1109/TNNLS.2022.3224007) <br> **Siyuan Chen**, Jiahai Wang. [[pdf](../files/TNNLS2022_HIMRAE.pdf)] <br> IEEE Transactions on Neural Networks and Learning Systems 2022
+1. [**Heterogeneous Interaction Modeling With Reduced Accumulated Error for Multi-Agent Trajectory Prediction.**](https://doi.org/10.1109/TNNLS.2022.3224007) [[pdf](../files/TNNLS2022_HIMRAE.pdf)] <br> **Siyuan Chen**, Jiahai Wang. <br> IEEE Transactions on Neural Networks and Learning Systems 2022
 2. [**Multiple Userids Identification with Deep Learning.**](https://www.sciencedirect.com/science/article/pii/S0957417422011678) <br> Xin Du, **Siyuan Chen**, Zhiyue Liu, Jiahai Wang. <br> Expert Systems With Applications 2022
 3. [**Graph Neural Networks with Dynamic and Static Representations for Social Recommendation.**](https://arxiv.org/abs/2201.10751v2) [[code]](https://github.com/ljf012/GNN-DSR) <br> Junfa Lin, **Siyuan Chen**, Jiahai Wang. <br> International Conference on Database Systems for Advanced Applications (**DASFAA**) 2022
 4. [**Multi-agent Deep Reinforcement Learning with Spatio-Temporal Feature Fusion for Traffic Signal Control.**](https://link.springer.com/chapter/10.1007/978-3-030-86514-6_29) <br> Xin Du, Jiahai Wang, **Siyuan Chen**, Zhiyue Liu. <br> European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases (**ECML-PKDD**) 2021
