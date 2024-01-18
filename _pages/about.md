@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-I am currently a lecturer in School of Computer Science and Cyber Engineering, Guangzhou University (GZHU). I received my Ph.D. degree from School of Comupter Science and Engineering, Sun Yat-sen University (SYSU), advised by Prof. [Jiahai Wang](http://cse.sysu.edu.cn/content/2551). My Chinese hompage at GZHU is [here](http://jsj.gzhu.edu.cn/info/1208/3501.htm).
+I am currently a Lecturer in School of Computer Science and Cyber Engineering, Guangzhou University (GZHU). I received my Ph.D. degree from School of Comupter Science and Engineering, Sun Yat-sen University (SYSU), advised by Prof. [Jiahai Wang](http://cse.sysu.edu.cn/content/2551). My Chinese hompage at GZHU is [here](http://jsj.gzhu.edu.cn/info/1208/3501.htm).
 <!--
 Here is my latest [cv](/files/CV_Siyuan_Chen_SYSU.pdf).
 -->
@@ -17,10 +17,11 @@ My research focuses on graph neural networks (GNNs) and graph representation lea
 
 Email: chensiyuan AT gzhu.edu.cn
 <!-- Email: chensy47 AT mail2.sysu.edu.cn -->
+
 Office: 608, Electronic Information Laboratory Building
 
 # Work Experience
-- 2023.7 - Present: Lectuer in School of Computer Science and Cyber Engineering, Guangzhou University.
+- 2023.7 - Present: Lecturer in School of Computer Science and Cyber Engineering, Guangzhou University.
 
 # Education
 - Ph.D.  in Computer Science and Technology, Sun Yat-sen University, 2018.9 - 2023.6.
@@ -43,7 +44,7 @@ Office: 608, Electronic Information Laboratory Building
 - DCS2691: Algebraic Structure (Fall, 2019, SYSU)
 
 # Academic Service
-Conference Reviewer: ICLR 2024, NeurIPS 2023, ECML-PKDD 2021, AAAI 2021
+Conference Reviewer: DASFAA 2024, ICLR 2024, NeurIPS 2023, ECML-PKDD 2021, AAAI 2021
 
 Journal Reviewer: IEEE Network Magazine 2022
 
