@@ -44,7 +44,7 @@ Office: 608, Electronic Information Laboratory Building
 - DCS2691: Algebraic Structure (Fall, 2019, SYSU)
 
 # Academic Service
-Conference Reviewer: DASFAA 2024, ICLR 2024, NeurIPS 2023, ECML-PKDD 2021, AAAI 2021
+Conference Reviewer: ICML 2024, DASFAA 2024, ICLR 2024, NeurIPS 2023, ECML-PKDD 2021, AAAI 2021
 
 Journal Reviewer: IEEE Network Magazine 2022
 
