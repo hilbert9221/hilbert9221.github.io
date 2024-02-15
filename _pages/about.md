@@ -8,40 +8,39 @@ redirect_from:
   - /about.html
 ---
 
-I am currently a Lecturer in School of Computer Science and Cyber Engineering, Guangzhou University (GZHU). I received my Ph.D. degree from School of Comupter Science and Engineering, Sun Yat-sen University (SYSU), advised by Prof. [Jiahai Wang](http://cse.sysu.edu.cn/content/2551). My Chinese hompage at GZHU is [here](http://jsj.gzhu.edu.cn/info/1208/3501.htm).
-<!--
-Here is my latest [cv](/files/CV_Siyuan_Chen_SYSU.pdf).
--->
+# Biography
 
-My research focuses on graph neural networks (GNNs) and graph representation learning. Currently I am applying GNNs to model the dynamics of complex systems (e.g. urban traffic system), hoping to reveal how interactions of individuals at the microscopic level lead to the emergence of intelligence at the macroscopic level. Besides, I am also interested in user identity linkage, which attempts to link accounts belonging to the same person across different social networks.
+I am currently a Lecturer in School of Computer Science and Cyber Engineering, Guangzhou University (GZHU). I received my Ph.D. degree from School of Computer Science and Engineering, Sun Yat-sen University (SYSU), advised by Prof. [Jiahai Wang](http://cse.sysu.edu.cn/content/2551). My Chinese hompage at GZHU is [here](http://jsj.gzhu.edu.cn/info/1208/3501.htm).
 
 Email: chensiyuan AT gzhu.edu.cn
 <!-- Email: chensy47 AT mail2.sysu.edu.cn -->
 
 Office: 608, Electronic Information Laboratory Building
 
+# Research Interests
+
+I am broadly interested in graph learning, including graph neural networks and graph representation learning. Currently, I design graph learning methods for multi-agent systems in the cyber, physical, and social space of smart cities, e.g., urban traffic systems and online social networks. For urban traffic systems, I aim to reveal how interactions of individuals at the microscopic level lead to the emergence of intelligence at the macroscopic level. For online social networks, I try to link accounts belonging to the same person across different social networks, a.k.a. user identity linkage, so that user information can be integrated for more comprehensive urban sensing and computing. My current research is summarized in the following figure.
+
+![Research overview](../files/research_overview.png)
+
 # Work Experience
 - 2023.7 - Present: Lecturer in School of Computer Science and Cyber Engineering, Guangzhou University.
 
 # Education
 - Ph.D.  in Computer Science and Technology, Sun Yat-sen University, 2018.9 - 2023.6.
-<!-- - Master student in Computer Science and Technology, Sun Yat-sen University, 2018.9 - 2020.6. (Successive Postgraduate and Doctoral Program) -->
 - B.S. in Mathematics and Applied Mathematics, Sun Yat-sen University, 2014.9 - 2018.6.
 
 # Research Experience
 - 2019.12 - 2022.12: Crowd Intelligence Emergence Mechanism and Evolution Method.
 
-<!--
-- 2018.9 - 2019.12: Social Network Mining and Sentiment Analysis.
--->
-
 # Internship
 - 2021.4 - 2021.5: iFLYTEK Co., Ltd., Hefei, China.
 
-# Teaching Assistant
-- DCS314: Intelligent Algorithms With Applications (Spring, 2021, SYSU)
-- DCS5601: Modern Artificial Intelligence Technology (Fall, 2020, SYSU)
-- DCS2691: Algebraic Structure (Fall, 2019, SYSU)
+# Teaching
+- GZHU: Data Mining (2023 Fall)
+- SYSU DCS314: Intelligent Algorithms With Applications, TA (2021 Spring)
+- SYSU DCS5601: Modern Artificial Intelligence Technology, TA (2020 Fall)
+- SYSU DCS2691: Algebraic Structure, TA (2019 Fall)
 
 # Academic Service
 Conference Reviewer: ICML 2024, DASFAA 2024, ICLR 2024, NeurIPS 2023, ECML-PKDD 2021, AAAI 2021
