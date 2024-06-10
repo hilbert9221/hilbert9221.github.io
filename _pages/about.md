@@ -43,7 +43,7 @@ I am broadly interested in graph learning, including graph neural networks and g
 - SYSU DCS2691: Algebraic Structure, TA (2019 Fall)
 
 # Academic Service
-Conference Reviewer: ICML 2024, DASFAA 2024, ICLR 2024, NeurIPS 2023, ECML-PKDD 2021, AAAI 2021
+Conference Reviewer: NeurIPS 2023-2024, ICML 2024, DASFAA 2024, ICLR 2024, ECAI 2024, ECML-PKDD 2021, AAAI 2021
 
 Journal Reviewer: IEEE Network Magazine 2022
 
