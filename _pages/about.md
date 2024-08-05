@@ -17,7 +17,11 @@ Email: chensiyuan AT gzhu.edu.cn
 Office: 608, Electronic Information Laboratory Building
 
 # Research Interests
-I am broadly interested in graph learning, including graph neural networks and graph representation learning. Currently, I design graph learning methods for multi-agent systems in the cyber, physical, and social space of smart cities, e.g., urban traffic systems and online social networks. For urban traffic systems, I aim to reveal how interactions of individuals at the microscopic level lead to the emergence of intelligence at the macroscopic level. For online social networks, I try to link accounts belonging to the same person across different social networks, a.k.a. user identity linkage, so that user information can be integrated for more comprehensive urban sensing and computing. My current research is summarized in the following figure.
+I am broadly interested in graph learning. Recently, I am actively working on the following research topics:
+- Graph learning for higher-order interactions: reveal the underlying higher-order structures (with a particular focus on simplicial complexes) of a dynamical system, and study how they affect the evolution of the system.
+- Skew normal generative models: develop deep generative models based on the skew normal distribution to handle asymmetry in spatio-temporal data distribution.
+
+During my Ph.D. study, I designed graph learning methods for multi-agent systems in the cyber, physical, and social space of smart cities, e.g., urban traffic systems and online social networks. For urban traffic systems, I tried to reveal how interactions of individuals at the microscopic level lead to the emergence of intelligence at the macroscopic level. For online social networks, I tried to link accounts belonging to the same person across different social networks, a.k.a. user identity linkage, so that user information can be integrated for more comprehensive urban sensing and computing. My past research is summarized in the following figure.
 
 <p align="center">
 <img src="../files/research_overview.png" width="60%" />
@@ -37,13 +41,16 @@ I am broadly interested in graph learning, including graph neural networks and g
 - 2021.4 - 2021.5: iFLYTEK Co., Ltd., Hefei, China.
 
 # Teaching
-- GZHU: Data Mining (2023 Fall)
+- GZHU: Computer and Information Technology Foundations (2024 Spring & Fall)
+- GZHU: Data Mining (2023 Fall, Graduate-level)
 - SYSU DCS314: Intelligent Algorithms With Applications, TA (2021 Spring)
 - SYSU DCS5601: Modern Artificial Intelligence Technology, TA (2020 Fall)
 - SYSU DCS2691: Algebraic Structure, TA (2019 Fall)
 
 # Academic Service
-Conference Reviewer: NeurIPS 2023-2024, ICML 2024, DASFAA 2024, ICLR 2024, ECAI 2024, ECML-PKDD 2021, AAAI 2021
+Conference Reviewer: NeurIPS 2024/2023, ICML 2024, ICLR 2024, AAAI 2024/2021, DASFAA 2024, ECAI 2024, ECML-PKDD 2021
+
+Workshop Reviewer: Temporal Graph Learning Workshop @ NeurIPS 2023
 
 Journal Reviewer: IEEE Network Magazine 2022
 
