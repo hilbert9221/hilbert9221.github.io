@@ -19,7 +19,7 @@ Office: 608, Electronic Information Laboratory Building
 # Research Interests
 I am broadly interested in graph learning. Recently, I am actively working on the following research topics:
 - Graph learning for higher-order interactions: reveal the underlying higher-order structures (with a particular focus on simplicial complexes) of a dynamical system, and study how they affect the evolution of the system.
-- Skew normal generative models: develop deep generative models based on the skew normal distribution to handle asymmetry in spatio-temporal data distribution.
+- Spatio-temporal generative models: develop deep generative models for complex spatio-temporal data.
 
 During my Ph.D. study, I designed graph learning methods for multi-agent systems in the cyber, physical, and social space of smart cities, e.g., urban traffic systems and online social networks. For urban traffic systems, I tried to reveal how interactions of individuals at the microscopic level lead to the emergence of intelligence at the macroscopic level. For online social networks, I tried to link accounts belonging to the same person across different social networks, a.k.a. user identity linkage, so that user information can be integrated for more comprehensive urban sensing and computing. My past research is summarized in the following figure.
 
