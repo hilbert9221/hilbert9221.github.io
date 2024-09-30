@@ -51,7 +51,7 @@ During my Ph.D. study, I designed graph learning methods for multi-agent systems
 - SYSU DCS2691: Algebraic Structure, TA (2019 Fall)
 
 # Academic Service
-Conference Reviewer: NeurIPS 2024/2023, ICML 2024, ICLR 2025/2024, AAAI 2024/2021, DASFAA 2024, ECAI 2024, ECML-PKDD 2021
+Conference Reviewer: NeurIPS 2024/2023, ICML 2024, ICLR 2025/2024, AAAI 2025/2021, DASFAA 2024, ECAI 2024, ECML-PKDD 2021
 
 Workshop Reviewer: Temporal Graph Learning Workshop @ NeurIPS 2023
 
