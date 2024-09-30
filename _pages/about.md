@@ -34,6 +34,9 @@ During my Ph.D. study, I designed graph learning methods for multi-agent systems
 - Ph.D.  in Computer Science and Technology, Sun Yat-sen University, 2018.9 - 2023.6.
 - B.S. in Mathematics and Applied Mathematics, Sun Yat-sen University, 2014.9 - 2018.6.
 
+# Fundings
+- 国家自然科学基金青年基金, 多智能体高阶交互图学习方法与应用研究, 2025.1-2027.12, 主持
+
 # Research Experience
 - 2019.12 - 2022.12: Crowd Intelligence Emergence Mechanism and Evolution Method.
 
@@ -48,11 +51,11 @@ During my Ph.D. study, I designed graph learning methods for multi-agent systems
 - SYSU DCS2691: Algebraic Structure, TA (2019 Fall)
 
 # Academic Service
-Conference Reviewer: NeurIPS 2024/2023, ICML 2024, ICLR 2024, AAAI 2024/2021, DASFAA 2024, ECAI 2024, ECML-PKDD 2021
+Conference Reviewer: NeurIPS 2024/2023, ICML 2024, ICLR 2025/2024, AAAI 2024/2021, DASFAA 2024, ECAI 2024, ECML-PKDD 2021
 
 Workshop Reviewer: Temporal Graph Learning Workshop @ NeurIPS 2023
 
-Journal Reviewer: IEEE Network Magazine 2022
+Journal Reviewer: T-ITS 2024, IEEE Network Magazine 2022
 
 Conference Volunteer: PRCV 2019
 

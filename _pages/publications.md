@@ -5,7 +5,7 @@ permalink: /publications/
 author_profile: true
 ---
 
-1. [**A Hierarchical Framework with Spatio-Temporal Consistency Learning for Emergence Detection in Complex Adaptive Systems.**](https://arxiv.org/abs/2401.10300) <br> **Siyuan Chen**, Xin Du, Jiahai Wang. <br> arXiv:2401.10300
+1. [**A Hierarchical Framework with Spatio-Temporal Consistency Learning for Emergence Detection in Complex Adaptive Systems.**](https://arxiv.org/abs/2401.10300) <br> **Siyuan Chen**, Xin Du, Jiahai Wang. <br> IEEE Transactions on Neural Networks and Learning Systems 2024
 2. [**Heterogeneous Interaction Modeling With Reduced Accumulated Error for Multi-Agent Trajectory Prediction.**](https://doi.org/10.1109/TNNLS.2022.3224007) [[pdf]](../files/TNNLS2022_HIMRAE.pdf) <br> **Siyuan Chen**, Jiahai Wang. <br> IEEE Transactions on Neural Networks and Learning Systems 2022
 3. [**Multiple Userids Identification with Deep Learning.**](https://www.sciencedirect.com/science/article/pii/S0957417422011678) <br> Xin Du, **Siyuan Chen**, Zhiyue Liu, Jiahai Wang. <br> Expert Systems With Applications 2022
 4. [**Graph Neural Networks with Dynamic and Static Representations for Social Recommendation.**](https://arxiv.org/abs/2201.10751v2) [[code]](https://github.com/ljf012/GNN-DSR) <br> Junfa Lin, **Siyuan Chen**, Jiahai Wang. <br> International Conference on Database Systems for Advanced Applications (**DASFAA**) 2022
