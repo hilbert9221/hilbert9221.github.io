@@ -35,7 +35,8 @@ During my Ph.D. study, I designed graph learning methods for multi-agent systems
 - B.S. in Mathematics and Applied Mathematics, Sun Yat-sen University, 2014.9 - 2018.6.
 
 # Fundings
-- 国家自然科学基金青年基金, 多智能体高阶交互图学习方法与应用研究, 2025.1-2027.12, 主持
+- 国家自然科学基金青年基金，多智能体高阶交互图学习方法与应用研究，2025.1-2027.12，主持
+- 广州市教育局高校科研项目-青年博士启动项目，认知和数据协同驱动的多主体轨迹预测与模拟方法研究，2024.9-2026.8，主持
 
 # Research Experience
 - 2019.12 - 2022.12: Crowd Intelligence Emergence Mechanism and Evolution Method.
