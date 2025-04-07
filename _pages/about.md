@@ -36,7 +36,7 @@ During my Ph.D. study, I designed graph learning methods for multi-agent systems
 
 # Fundings
 - 国家自然科学基金青年基金，多智能体高阶交互图学习方法与应用研究，2025.1-2027.12，主持
-- 广州市教育局高校科研项目-青年博士启动项目，认知和数据协同驱动的多主体轨迹预测与模拟方法研究，2024.9-2026.8，主持
+- 广州市高校科技类青年项目，认知和数据协同驱动的多主体轨迹预测与模拟方法研究，2024.9-2026.8，主持
 
 # Research Experience
 - 2019.12 - 2022.12: Crowd Intelligence Emergence Mechanism and Evolution Method.
@@ -45,18 +45,18 @@ During my Ph.D. study, I designed graph learning methods for multi-agent systems
 - 2021.4 - 2021.5: iFLYTEK Co., Ltd., Hefei, China.
 
 # Teaching
-- GZHU: Computer and Information Technology Foundations (2024 Spring & Fall)
-- GZHU: Data Mining (2023 Fall, Graduate-level)
+- GZHU: Computer and Information Technology Foundations (2024-2025)
+- GZHU: Data Mining (2025 Spring, 2023 Fall, Graduate-level)
 - SYSU DCS314: Intelligent Algorithms With Applications, TA (2021 Spring)
 - SYSU DCS5601: Modern Artificial Intelligence Technology, TA (2020 Fall)
 - SYSU DCS2691: Algebraic Structure, TA (2019 Fall)
 
 # Academic Service
-Conference Reviewer: NeurIPS 2024/2023, ICML 2024, ICLR 2025/2024, AAAI 2025/2021, DASFAA 2024, ECAI 2024, ECML-PKDD 2021
+Conference Reviewer: NeurIPS 2025/2024/2023, ICML 2025/2024, ICLR 2025/2024, AAAI 2025/2021, DASFAA 2025/2024, ECAI 2025/2024, ICME 2025, ECML-PKDD 2021
 
 Workshop Reviewer: Temporal Graph Learning Workshop @ NeurIPS 2023
 
-Journal Reviewer: T-ITS 2024, IEEE Network Magazine 2022
+Journal Reviewer: IEEE T-ITS, Knowledge-Based Systems, Information Science, IEEE Network Magazine
 
 Conference Volunteer: PRCV 2019
 
