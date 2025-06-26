@@ -16,8 +16,11 @@ Email: chensiyuan AT gzhu.edu.cn
 
 Office: 608, Electronic Information Laboratory Building
 
+欢迎2025级计算机科学与技术、电子信息专业硕士研究生加入实验室！
+
 # Research Interests
 I am broadly interested in graph learning. Recently, I am actively working on the following research topics:
+- Foundation models for graph and spatio-temporal data.
 - Graph learning for higher-order interactions: reveal the underlying higher-order structures (with a particular focus on simplicial complexes) of a dynamical system, and study how they affect the evolution of the system.
 - Spatio-temporal generative models: develop deep generative models for complex spatio-temporal data.
 
@@ -52,11 +55,11 @@ During my Ph.D. study, I designed graph learning methods for multi-agent systems
 - SYSU DCS2691: Algebraic Structure, TA (2019 Fall)
 
 # Academic Service
-Conference Reviewer: NeurIPS 2025/2024/2023, ICML 2025/2024, ICLR 2025/2024, AAAI 2025/2021, DASFAA 2025/2024, ECAI 2025/2024, ICME 2025, ECML-PKDD 2021
+Conference Reviewer: NeurIPS 2025/2024/2023, ICML 2025/2024, ICLR 2025/2024, AAAI 2025/2021, MM 2025, DASFAA 2025/2024, ECAI 2025/2024, ICME 2025, ECML-PKDD 2025
 
-Workshop Reviewer: Temporal Graph Learning Workshop @ NeurIPS 2023
+Workshop Reviewer: Temporal Graph Learning Workshop @ NeurIPS2023/KDD2025
 
-Journal Reviewer: IEEE T-ITS, Knowledge-Based Systems, Information Science, IEEE Network Magazine
+Journal Reviewer: IEEE T-ITS, Knowledge-Based Systems, Information Sciences, IEEE Network Magazine
 
 Conference Volunteer: PRCV 2019
 
